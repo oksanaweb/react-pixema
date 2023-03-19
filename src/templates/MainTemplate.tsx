@@ -1,15 +1,31 @@
+import { MainLogo } from "assets";
+import { Header, InputSearch, Nav, UserProfile } from "components";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "../components/Header/Header";
-import { Nav } from "../components/Nav/Nav";
-import { StyledBox, StyledTemplate } from "./styles";
+import {
+  StyledBox,
+  StyledHeaderGroup,
+  StyledLogo,
+  StyledNavBox,
+  StyledTemplate,
+} from "./styles";
 
 export const MainTemplate = () => {
   return (
     <StyledTemplate>
-      <Header />
-      <StyledBox>
+      <StyledNavBox>
+        <StyledLogo>
+          <MainLogo />
+        </StyledLogo>
         <Nav />
+      </StyledNavBox>
+
+      <StyledBox>
+        <StyledHeaderGroup>
+          <InputSearch />
+          <UserProfile />
+        </StyledHeaderGroup>
+
         <Outlet />
       </StyledBox>
     </StyledTemplate>
