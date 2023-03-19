@@ -12,6 +12,9 @@ input {
   border:none;
   }
 
+
+ li {list-style:none} 
+
 body {
   
 }
