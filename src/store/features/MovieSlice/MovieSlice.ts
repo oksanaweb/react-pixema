@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { transformMoviesApi } from "../../../mappers";
-import { Movie } from "../../../types";
+import { transformMoviesApi } from "mappers";
+import { Movie } from "types";
 
 interface MoviesState {
   movies: Movie[];
@@ -22,8 +22,9 @@ export const fetchMovies = createAsyncThunk<
 >("movies/fetchMovies", async ({ page }, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
-      "https://www.omdbapi.com/?i=tt3896198&apikey=85b6fcde&s=batman&type=movie&y=2022&page=1"
+      "https://www.omdbapi.com/?i=tt3896198&apikey=85b6fcde&s=love&type=movie&y=2022&page=1"
     );
+
     const transformedMovies = transformMoviesApi(data);
     return transformedMovies;
   } catch (error) {
@@ -43,8 +44,8 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      console.log("payload:", payload);
-      state.movies.push(...payload);
+      console.log(payload);
+      state.movies = payload;
     });
 
     builder.addCase(fetchMovies.rejected, (state, { payload }) => {
