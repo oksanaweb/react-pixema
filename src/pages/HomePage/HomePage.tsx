@@ -1,11 +1,7 @@
+import { MovieList } from "components";
 import React, { useEffect, useState } from "react";
-import { generatePath, Link } from "react-router-dom";
-import { MovieList } from "../../components/MovieList/MovieList";
-
-import { ROUTE } from "../../router/routes";
-import { fetchMovies } from "../../store/features";
-
-import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { fetchMovies, useAppDispatch, useAppSelector } from "store";
+import { StyledBox } from "./styles";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -18,18 +14,12 @@ export const HomePage = () => {
   console.log(movies);
 
   return (
-    <div>
+    <StyledBox>
       {isLoading && <div>isload....</div>}
 
       {error && <span>{error}</span>}
 
-      {movies?.length > 0 && (
-        <ul>
-          {movies.map((movie) => {
-            return <li>{movie.title}</li>;
-          })}
-        </ul>
-      )}
-    </div>
+      {movies?.length > 0 && <MovieList movies={movies} />}
+    </StyledBox>
   );
 };
