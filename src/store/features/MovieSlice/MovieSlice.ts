@@ -22,7 +22,7 @@ export const fetchMovies = createAsyncThunk<
 >("movies/fetchMovies", async ({ page }, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
-      "https://www.omdbapi.com/?i=tt3896198&apikey=85b6fcde&s=love&type=movie&y=2022&page=1"
+      "https://www.omdbapi.com/?i=tt3896198&apikey=85b6fcde&s=2022&type=movie&y=2022&page=1"
     );
 
     const transformedMovies = transformMoviesApi(data);
