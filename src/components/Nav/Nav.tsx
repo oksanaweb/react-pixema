@@ -27,7 +27,6 @@ export const Nav = () => {
           <FireIcon />
           <StyledTitle>Favorites</StyledTitle>
         </CustomLink>
-
         <CustomLink to={ROUTE.Settings}>
           <SettingIcon />
           <StyledTitle>Settings</StyledTitle>
