@@ -2,7 +2,11 @@ import { CloseIcon } from "assets";
 import { CustomSelect, FilterInput } from "components";
 import { Portal, PortalTarget } from "components/Portal/Portal";
 import React from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "router";
+import { useAppDispatch } from "store";
+import { setMovieTitle } from "store/features";
 import {
   StyledButtonBox,
   StyledButtonClear,
@@ -33,6 +37,12 @@ export interface Option {
 
 type OptionType = "movie" | "series" | "episode";
 
+interface FormValues {
+  s: string;
+  y: string;
+  type: Option;
+}
+
 const options: Option[] = [
   { value: "series", label: "series" },
   { value: "movie", label: "movie" },
@@ -43,11 +53,20 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
   const closeModal = () => {
     toggleModal(false);
   };
-  const { control, handleSubmit, reset } = useForm();
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const onSubmit: SubmitHandler<FormValues> = () => {
+    navigate(ROUTE.Search);
+    dispatch(setMovieTitle);
+  };
+
+  const { control, handleSubmit, reset } = useForm<FormValues>();
   return (
     <Portal target={PortalTarget.MODAL}>
       {isOpen && (
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
           <StyledTitle>
             <Title>Filters</Title>
             <StyledCloseButton>
