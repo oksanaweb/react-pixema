@@ -6,7 +6,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { useAppDispatch } from "store";
-import { setMovieTitle } from "store/features";
+import { setMovieTitle, setMovieType, setMovieYear } from "store/features";
+
 import {
   StyledButtonBox,
   StyledButtonClear,
@@ -57,9 +58,11 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<FormValues> = () => {
+  const onSubmit: SubmitHandler<FormValues> = (filter) => {
     navigate(ROUTE.Search);
-    dispatch(setMovieTitle);
+    dispatch(setMovieTitle(filter.s));
+    dispatch(setMovieYear(filter.y));
+    dispatch(setMovieType(filter.type));
   };
 
   const { control, handleSubmit, reset } = useForm<FormValues>();
@@ -81,13 +84,8 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
               rules={{
                 required: "title is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <FilterInput
-                  onChange={onChange}
-                  value={value}
-                  placeholder="Enter title"
-                  type="text"
-                />
+              render={({ field: { ref, ...rest } }) => (
+                <FilterInput {...rest} placeholder="Enter title" type="text" />
               )}
             />
           </StyledMovieName>
@@ -100,13 +98,8 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
               rules={{
                 required: "year is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <FilterInput
-                  onChange={onChange}
-                  value={value}
-                  placeholder="Year"
-                  type="text"
-                />
+              render={({ field: { ref, ...rest } }) => (
+                <FilterInput {...rest} placeholder="Year" type="text" />
               )}
             />
           </StyledMovieYear>
@@ -127,7 +120,7 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
           </StyledSelect>
           <StyledButtonBox>
             <StyledButtonClear>Clear Filter</StyledButtonClear>
-            <StyledButtonShow>Show results</StyledButtonShow>
+            <StyledButtonShow type="submit">Show results</StyledButtonShow>
           </StyledButtonBox>
         </StyledForm>
       )}
