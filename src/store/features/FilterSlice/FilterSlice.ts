@@ -7,7 +7,7 @@ import { Option, OptionType } from "types/types";
 interface SortedMovies {
   y: string;
   s: string;
-  type: string;
+  type: Option | string;
 }
 
 interface FilterState {
@@ -46,15 +46,15 @@ const filterSlice = createSlice({
   name: "filterMovies",
   initialState,
   reducers: {
-    setMovieTitle: (state, { payload }) => {
+    setMovieTitle: (state, { payload }: PayloadAction<string>) => {
       state.parameters.s = payload;
     },
 
-    setMovieYear: (state, { payload }) => {
+    setMovieYear: (state, { payload }: PayloadAction<string>) => {
       state.parameters.y = payload;
     },
 
-    setMovieType: (state, { payload }) => {
+    setMovieType: (state, { payload }: PayloadAction<Option>) => {
       state.parameters.type = payload;
     },
   },
