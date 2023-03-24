@@ -1,23 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
 import { transformDetailsMovies } from "mappers";
-
-import { MovieDetails } from "types/types";
+import { MovieDetailsInfo } from "types/types";
 
 interface DetailsState {
-  details: MovieDetails;
+  details: MovieDetailsInfo;
   isLoading: boolean;
   error: string | null;
 }
 
 const initialState: DetailsState = {
-  details: {} as MovieDetails,
+  details: {} as MovieDetailsInfo,
   isLoading: false,
   error: null,
 };
 
 export const fetchMoviesDetails = createAsyncThunk<
-  MovieDetails,
+  MovieDetailsInfo,
   string,
   { rejectValue: string }
 >("trends/fetchMoviesTrends", async (imdbID, { rejectWithValue }) => {

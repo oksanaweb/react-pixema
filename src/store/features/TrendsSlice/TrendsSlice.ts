@@ -22,7 +22,7 @@ export const fetchMoviesTrends = createAsyncThunk<
 >("trends/fetchMoviesTrends", async ({ page }, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
-      "https://www.omdbapi.com/?s=Life&apikey=85b6fcde&page=1"
+      "https://www.omdbapi.com/?s=woman&apikey=85b6fcde&page=1"
     );
 
     const transformedMovies = transformMoviesApi(data);

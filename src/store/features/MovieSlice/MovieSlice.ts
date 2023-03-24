@@ -7,12 +7,14 @@ interface MoviesState {
   movies: Movie[];
   isLoading: boolean;
   error: string | null;
+  recommendations: Movie[];
 }
 
 const initialState: MoviesState = {
   movies: [],
   isLoading: false,
   error: null,
+  recommendations: [],
 };
 
 export const fetchMovies = createAsyncThunk<
@@ -22,7 +24,7 @@ export const fetchMovies = createAsyncThunk<
 >("movies/fetchMovies", async ({ page }, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
-      "https://www.omdbapi.com/?i=tt3896198&apikey=85b6fcde&s=2022&type=movie&y=2022&page=1"
+      "http://www.omdbapi.com/?s=life&apikey=85b6fcde"
     );
 
     const transformedMovies = transformMoviesApi(data);
@@ -30,6 +32,25 @@ export const fetchMovies = createAsyncThunk<
   } catch (error) {
     const { message } = error as AxiosError;
     return rejectWithValue(message);
+  }
+});
+
+//Movie recommendations
+export const fetchMoviesRecommendations = createAsyncThunk<
+  Movie[],
+  string,
+  { rejectValue: string }
+>("movies/fetchMoviesRecommends", async (title, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.get(
+      `https://www.omdbapi.com/?s=man&apikey=85b6fcde&`
+    );
+
+    const transformedMovies = transformMoviesApi(data);
+    return transformedMovies;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    return rejectWithValue(axiosError.message);
   }
 });
 
