@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { createGlobalStyle } from "styled-components";
+import { Colors } from "./colors";
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -16,7 +17,7 @@ input {
  li {list-style:none} 
 
 body {
-  
+  background-color:${Colors.GRAPHITE}
 }
 
 button {
