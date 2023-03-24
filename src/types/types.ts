@@ -60,7 +60,7 @@ interface MovieDetailsApi {
   Response: string;
 }
 
-interface MovieDetails {
+interface MovieDetailsInfo {
   title: string;
   year: string;
   rated: string;
@@ -98,5 +98,5 @@ export type {
   MovieResponse,
   ResponseData,
   MovieDetailsApi,
-  MovieDetails,
+  MovieDetailsInfo,
 };
