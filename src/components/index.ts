@@ -11,6 +11,8 @@ import { Portal } from "./Portal/Portal";
 import { Modal } from "./Modal/Modal";
 import { FilterInput } from "./FilterInput/FilterInput";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
+import { MovieDetails } from "./MovieDetails/MovieDetails";
+import { Slider } from "./Slider/Slider";
 
 export {
   MovieList,
@@ -26,4 +28,6 @@ export {
   Modal,
   FilterInput,
   CustomSelect,
+  MovieDetails,
+  Slider,
 };
