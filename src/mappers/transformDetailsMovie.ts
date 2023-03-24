@@ -1,8 +1,8 @@
-import { MovieDetailsApi, MovieDetails } from "types/types";
+import { MovieDetailsApi, MovieDetailsInfo } from "types/types";
 
 export const transformDetailsMovies = (
   details: MovieDetailsApi
-): MovieDetails => {
+): MovieDetailsInfo => {
   return {
     title: details.Title,
     year: details.Year,
