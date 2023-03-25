@@ -1,25 +1,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { transformDetailsMovies } from "mappers";
-import { MovieDetailsInfo } from "types/types";
+import { transformDetailsMovies, transformMoviesApi } from "mappers";
+import { Movie, MovieDetailsInfo } from "types/types";
 
 interface DetailsState {
   details: MovieDetailsInfo;
   isLoading: boolean;
   error: string | null;
+  recommendations: Movie[];
 }
 
 const initialState: DetailsState = {
   details: {} as MovieDetailsInfo,
   isLoading: false,
   error: null,
+  recommendations: [],
 };
 
 export const fetchMoviesDetails = createAsyncThunk<
   MovieDetailsInfo,
   string,
   { rejectValue: string }
->("trends/fetchMoviesTrends", async (imdbID, { rejectWithValue }) => {
+>("details/fetchMoviesDetails", async (imdbID, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
       `https://www.omdbapi.com/?i=${imdbID}&apikey=85b6fcde&`
@@ -30,6 +32,25 @@ export const fetchMoviesDetails = createAsyncThunk<
   } catch (error) {
     const { message } = error as AxiosError;
     return rejectWithValue(message);
+  }
+});
+
+//Movie recommendations
+export const fetchMoviesRecommendations = createAsyncThunk<
+  Movie[],
+  string,
+  { rejectValue: string }
+>("movies/fetchMoviesRecommends", async (title, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.get(
+      "https://www.omdbapi.com/?s=man&apikey=85b6fcde&"
+    );
+
+    const transformedMovies = transformMoviesApi(data);
+    return transformedMovies;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    return rejectWithValue(axiosError.message);
   }
 });
 
