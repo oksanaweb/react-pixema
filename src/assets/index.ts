@@ -13,6 +13,8 @@ import { ReactComponent as ArrowDownIcon } from "./icons/arrow-down.svg";
 
 import { ReactComponent as CloseIcon } from "./icons/close-cross.svg";
 
+import BackgroundImage from "./image/background-image.png";
+
 export {
   HomeIcon,
   FireIcon,
@@ -24,4 +26,5 @@ export {
   ArrowRightIcon,
   ArrowDownIcon,
   CloseIcon,
+  BackgroundImage,
 };
