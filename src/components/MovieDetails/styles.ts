@@ -96,8 +96,14 @@ export const Description = styled.p`
   color:${Colors.WHITE}
 `;
 
-export const SliderWrapper = styled.div``;
+export const SliderWrapper = styled.div`
+  margin: 0 auto;
+`;
 
 export const SliderTitleWrapper = styled.div``;
 
-export const SliderTittle = styled.p``;
+export const SliderTittle = styled.p`
+  ${Typography.H2}
+  color:${Colors.WHITE};
+  margin-bottom: 10px;
+`;

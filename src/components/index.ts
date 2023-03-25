@@ -13,6 +13,9 @@ import { FilterInput } from "./FilterInput/FilterInput";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
 import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { Slider } from "./Slider/Slider";
+import { Slide } from "./Slide/Slide";
+import { FormSignIn } from "./FormSignIn/FormSignIn";
+import { Button } from "./Button/Button";
 
 export {
   MovieList,
@@ -30,4 +33,7 @@ export {
   CustomSelect,
   MovieDetails,
   Slider,
+  Slide,
+  FormSignIn,
+  Button,
 };

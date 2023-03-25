@@ -79,6 +79,7 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
           <StyledMovieName>
             <StyledMovieTitle>Full or short movie name</StyledMovieTitle>
             <Controller
+              defaultValue=""
               control={control}
               name="s"
               rules={{
@@ -93,6 +94,7 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
           <StyledMovieYear>
             <StyledMovieTitleYear>Years</StyledMovieTitleYear>
             <Controller
+              defaultValue=""
               control={control}
               name="y"
               rules={{
