@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import { Link } from "react-router-dom";
 import { Colors, Typography } from "ui";
 
 export const FormWrap = styled.div`
@@ -26,7 +27,7 @@ export const TitleForm = styled.h3`
 
 export const InputBox = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
   grid-gap: 7px;
 `;
 
@@ -46,40 +47,6 @@ export const InputEmail = styled.input`
   }
 `;
 
-export const InputPassword = styled.input`
-  width: 490px;
-  padding: 16px 20px;
-  border-radius: 10px;
-  background-color: ${Colors.GRAPHITE};
-  &-placholder {
-    ${Typography.S2};
-    color: ${Colors.SECONDARY};
-  }
-`;
-
-export const TitleResetPassword = styled(Link)`
-  ${Typography.S2}
-  color:${Colors.SECONDARY};
-  text-decoration: none;
-`;
-
 export const ButtonWrap = styled.div`
   margin-top: 30px;
-`;
-
-export const SignUpLink = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const SignUpTitle = styled.p`
-  ${Typography.S3}
-  color:${Colors.SECONDARY};
-  margin-right: 10px;
-`;
-
-export const StyledLink = styled(Link)`
-  ${Typography.S3}
-  color:${Colors.PRIMARY};
-  text-decoration: none;
 `;
