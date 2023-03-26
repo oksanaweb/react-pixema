@@ -17,7 +17,7 @@ input {
  li {list-style:none} 
 
 body {
-  background-color:${Colors.GRAPHITE}
+ background-color:${Colors.BLACK}
 }
 
 button {
