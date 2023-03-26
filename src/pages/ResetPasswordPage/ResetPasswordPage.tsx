@@ -1,5 +1,6 @@
+import { FormReset } from "components";
 import React from "react";
 
 export const ResetPasswordPage = () => {
-  return <div>ResetPasswordPage</div>;
+  return <FormReset />;
 };
