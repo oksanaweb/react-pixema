@@ -12,8 +12,8 @@ export const AuthTemplate = () => {
       </LogoWrap>
       <StyledOutlet>
         <Outlet />
-        <StyledCopyright>© All Rights Reserved</StyledCopyright>{" "}
       </StyledOutlet>
+      <StyledCopyright>© All Rights Reserved</StyledCopyright>
     </StyledAuth>
   );
 };
