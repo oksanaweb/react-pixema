@@ -1,5 +1,5 @@
 import { MainLogo } from "assets";
-import { Header, InputSearch, Modal, Nav, UserProfile } from "components";
+import { InputSearch, Modal, Nav, UserProfile } from "components";
 import { useToggle } from "hooks";
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -21,6 +21,7 @@ export const MainTemplate = () => {
         <StyledLogo>
           <MainLogo width={160} />
         </StyledLogo>
+
         <Nav />
       </StyledNavBox>
 

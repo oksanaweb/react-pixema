@@ -92,6 +92,13 @@ interface RatingApi {
   Value: string;
 }
 
+interface UserInfo {
+  email: string;
+  password: string;
+  name: string;
+  confirmPassword: string;
+}
+
 export type {
   MovieApi,
   Movie,
@@ -99,4 +106,5 @@ export type {
   ResponseData,
   MovieDetailsApi,
   MovieDetailsInfo,
+  UserInfo,
 };
