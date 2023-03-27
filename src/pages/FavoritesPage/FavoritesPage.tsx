@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { MovieList } from "../../components/MovieList/MovieList";
+import React from "react";
 
 export const FavoritesPage = () => {
   return (

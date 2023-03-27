@@ -14,7 +14,7 @@ export const SearchPage = () => {
   useEffect(() => {
     if (parameters.s || parameters.y || parameters.type)
       dispatch(fetchMoviesByParameter(parameters));
-  }, [parameters]);
+  }, [dispatch, parameters]);
 
   return (
     <div>
