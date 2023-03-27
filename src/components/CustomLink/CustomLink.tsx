@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { NavLink, useMatch } from "react-router-dom";
+import { useMatch } from "react-router-dom";
 import { ROUTE } from "router";
 import { StyledCustomLink } from "./styles";
 

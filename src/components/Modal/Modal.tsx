@@ -14,8 +14,6 @@ import {
   StyledButtonShow,
   StyledCloseButton,
   StyledForm,
-  StyledMovieInput,
-  StyledMovieInputYear,
   StyledMovieName,
   StyledMovieTitle,
   StyledMovieTitleYear,

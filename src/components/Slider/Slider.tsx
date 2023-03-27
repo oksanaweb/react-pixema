@@ -4,9 +4,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/bundle";
-import { FreeMode, Navigation, Pagination, Scrollbar } from "swiper";
-
-import { Movie } from "types";
+import { FreeMode, Navigation, Pagination } from "swiper";
 import { SlideContainer } from "./styles";
 import { Slide } from "components";
 import { useAppSelector } from "store";
@@ -23,8 +21,8 @@ export const Slider = () => {
         centeredSlides={true}
         navigation
         pagination={{ clickable: true }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => "slide change"}
+        onSwiper={(swiper) => swiper}
       >
         <SlideContainer>
           {movies.map((movie) => {

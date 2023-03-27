@@ -1,6 +1,4 @@
 import styled from "styled-components";
-
-import { Link } from "react-router-dom";
 import { Colors, Typography } from "ui";
 
 export const FormWrap = styled.div`
