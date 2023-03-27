@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
 import { transformMoviesApi } from "mappers";
 import { Movie } from "types";
-import { Option, OptionType } from "types/types";
+import { Option } from "types/types";
 
 interface SortedMovies {
   y: string;
