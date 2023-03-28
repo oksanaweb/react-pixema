@@ -1,7 +1,14 @@
-import { ButtonInput } from "assets";
+import { ButtonInput, MainLogo } from "assets";
+import { UserProfile } from "components";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { StyledButton, StyledInput, StyledInputForm } from "./styles";
+import {
+  StyledButton,
+  StyledInput,
+  StyledInputForm,
+  StyledLogo,
+  Wrapper,
+} from "./styles";
 
 interface InputProps {
   toggleModal: (value: boolean) => void;
@@ -15,16 +22,23 @@ export const InputSearch = ({ toggleModal }: InputProps) => {
   };
 
   return (
-    <StyledInputForm>
-      <StyledInput
-        placeholder="Search..."
-        type={"text"}
-        {...register("search")}
-      />
+    <Wrapper>
+      <StyledLogo>
+        <MainLogo width={160} />
+      </StyledLogo>
 
-      <StyledButton onClick={openModal} type="button">
-        <ButtonInput />
-      </StyledButton>
-    </StyledInputForm>
+      <StyledInputForm>
+        <StyledInput
+          placeholder="Search..."
+          type={"text"}
+          {...register("search")}
+        />
+        <StyledButton onClick={openModal} type="button">
+          <ButtonInput />
+        </StyledButton>
+      </StyledInputForm>
+
+      <UserProfile />
+    </Wrapper>
   );
 };

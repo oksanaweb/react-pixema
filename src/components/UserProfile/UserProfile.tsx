@@ -2,7 +2,6 @@ import { ArrowRightIcon, UserIcon } from "assets";
 import React from "react";
 import { ROUTE } from "router";
 import {
-  StyledButton,
   StyledText,
   StyledUser,
   StyledUserIcon,
@@ -20,9 +19,7 @@ export const UserProfile = () => {
         <StyledText>Sign In</StyledText>
       </UserTextContainer>
 
-      <StyledButton>
-        <ArrowRightIcon />
-      </StyledButton>
+      <ArrowRightIcon />
     </StyledUser>
   );
 };
