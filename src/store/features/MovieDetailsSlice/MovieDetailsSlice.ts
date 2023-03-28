@@ -23,9 +23,7 @@ export const fetchMoviesDetails = createAsyncThunk<
   { rejectValue: string }
 >("details/fetchMoviesDetails", async (imdbID, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get(
-      `https://www.omdbapi.com/?i=${imdbID}&apikey=85b6fcde&`
-    );
+    const { data } = await axios.get(`https://www.omdbapi.com/?i=${imdbID}&apikey=85b6fcde&`);
 
     const transformedMovies = transformDetailsMovies(data);
     return transformedMovies;
@@ -42,9 +40,7 @@ export const fetchMoviesRecommendations = createAsyncThunk<
   { rejectValue: string }
 >("movies/fetchMoviesRecommends", async (title, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get(
-      "https://www.omdbapi.com/?s=man&apikey=85b6fcde&"
-    );
+    const { data } = await axios.get("https://www.omdbapi.com/?s=man&apikey=85b6fcde&");
 
     const transformedMovies = transformMoviesApi(data);
     return transformedMovies;
@@ -65,7 +61,6 @@ const movieDetailsSlice = createSlice({
     });
     builder.addCase(fetchMoviesDetails.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
       state.details = payload;
     });
 

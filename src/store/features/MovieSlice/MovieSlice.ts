@@ -15,23 +15,20 @@ const initialState: MoviesState = {
   error: null,
 };
 
-export const fetchMovies = createAsyncThunk<
-  Movie[],
-  { page: number },
-  { rejectValue: string }
->("movies/fetchMovies", async ({ page }, { rejectWithValue }) => {
-  try {
-    const { data } = await axios.get(
-      "http://www.omdbapi.com/?s=life&apikey=85b6fcde"
-    );
+export const fetchMovies = createAsyncThunk<Movie[], { page: number }, { rejectValue: string }>(
+  "movies/fetchMovies",
+  async ({ page }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get("http://www.omdbapi.com/?s=life&apikey=85b6fcde");
 
-    const transformedMovies = transformMoviesApi(data);
-    return transformedMovies;
-  } catch (error) {
-    const { message } = error as AxiosError;
-    return rejectWithValue(message);
-  }
-});
+      const transformedMovies = transformMoviesApi(data);
+      return transformedMovies;
+    } catch (error) {
+      const { message } = error as AxiosError;
+      return rejectWithValue(message);
+    }
+  },
+);
 
 const moviesSlice = createSlice({
   name: "movies",
@@ -44,7 +41,6 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
       state.movies = payload;
     });
 

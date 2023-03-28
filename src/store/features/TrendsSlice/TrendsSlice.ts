@@ -21,9 +21,7 @@ export const fetchMoviesTrends = createAsyncThunk<
   { rejectValue: string }
 >("trends/fetchMoviesTrends", async ({ page }, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get(
-      "https://www.omdbapi.com/?s=woman&apikey=85b6fcde&page=1"
-    );
+    const { data } = await axios.get("https://www.omdbapi.com/?s=woman&apikey=85b6fcde&page=1");
 
     const transformedMovies = transformMoviesApi(data);
     return transformedMovies;
@@ -44,7 +42,6 @@ const trendsSlice = createSlice({
     });
     builder.addCase(fetchMoviesTrends.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
       state.trends = payload;
     });
 
