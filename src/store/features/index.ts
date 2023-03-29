@@ -7,6 +7,8 @@ import { fetchMoviesDetails } from "./MovieDetailsSlice/MovieDetailsSlice";
 import { setMovieTitle } from "./FilterSlice/FilterSlice";
 import { setMovieType } from "./FilterSlice/FilterSlice";
 import { setMovieYear } from "./FilterSlice/FilterSlice";
+import { nextMoviePage } from "./MovieSlice/MovieSlice";
+import { fetchNextPageMovies } from "./MovieSlice/MovieSlice";
 
 export {
   fetchMovies,
@@ -16,4 +18,6 @@ export {
   setMovieTitle,
   setMovieType,
   setMovieYear,
+  nextMoviePage,
+  fetchNextPageMovies,
 };
