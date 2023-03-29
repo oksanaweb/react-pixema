@@ -1,14 +1,8 @@
-import { ButtonInput, MainLogo } from "assets";
+import { InputIcon, MainLogo } from "assets";
 import { UserProfile } from "components";
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  StyledButton,
-  StyledInput,
-  StyledInputForm,
-  StyledLogo,
-  Wrapper,
-} from "./styles";
+import { StyledButton, StyledInput, StyledInputForm, StyledLogo, Wrapper } from "./styles";
 
 interface InputProps {
   toggleModal: (value: boolean) => void;
@@ -28,13 +22,9 @@ export const InputSearch = ({ toggleModal }: InputProps) => {
       </StyledLogo>
 
       <StyledInputForm>
-        <StyledInput
-          placeholder="Search..."
-          type={"text"}
-          {...register("search")}
-        />
+        <StyledInput placeholder="Search..." type={"text"} {...register("search")} />
         <StyledButton onClick={openModal} type="button">
-          <ButtonInput />
+          <InputIcon />
         </StyledButton>
       </StyledInputForm>
 
