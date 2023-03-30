@@ -31,7 +31,7 @@ export const fetchMoviesByParameter = createAsyncThunk<
 >("filterMovies/fetchByParameter", async (parameters, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
-      `https://www.omdbapi.com/?apikey=85b6fcde&s=${parameters.s}&y=${parameters.y}`
+      `https://www.omdbapi.com/?apikey=85b6fcde&s=${parameters.s}&y=${parameters.y}`,
     );
 
     const transformedMovies = transformMoviesApi(data);
@@ -57,6 +57,17 @@ const filterSlice = createSlice({
     setMovieType: (state, { payload }: PayloadAction<Option>) => {
       state.parameters.type = payload;
     },
+
+    wipeOutMovies(state) {
+      state.movies = [];
+    },
+    deleteMoviesParameters(state) {
+      state.parameters = {
+        s: "",
+        type: "",
+        y: "",
+      };
+    },
   },
 
   extraReducers(builder) {
@@ -75,7 +86,7 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setMovieTitle, setMovieYear, setMovieType } =
+export const { setMovieTitle, setMovieYear, setMovieType, deleteMoviesParameters, wipeOutMovies } =
   filterSlice.actions;
 
 export default filterSlice.reducer;
