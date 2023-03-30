@@ -9,6 +9,7 @@ import { ReactComponent as ArrowRightIcon } from "./icons/arrow-right-icon.svg";
 import { ReactComponent as ArrowDownIcon } from "./icons/arrow-down-icon.svg";
 import { ReactComponent as CloseIcon } from "./icons/close-cross-icon.svg";
 import BackgroundMovies from "./image/background-movies.png";
+import { ReactComponent as MenuIcon } from "./icons/burger-menu-icon.svg";
 
 export {
   HomeIcon,
@@ -22,4 +23,5 @@ export {
   ArrowDownIcon,
   CloseIcon,
   BackgroundMovies,
+  MenuIcon,
 };
