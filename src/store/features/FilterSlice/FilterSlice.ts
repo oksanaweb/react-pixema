@@ -31,7 +31,7 @@ export const fetchMoviesByParameter = createAsyncThunk<
 >("filterMovies/fetchByParameter", async (parameters, { rejectWithValue }) => {
   try {
     const { data } = await axios.get(
-      `https://www.omdbapi.com/?apikey=85b6fcde&s=${parameters.s}&y=${parameters.y}`,
+      `https://www.omdbapi.com/?apikey=85b6fcde&s=${parameters.s}&y=${parameters.y}&`,
     );
 
     const transformedMovies = transformMoviesApi(data);
