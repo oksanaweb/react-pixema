@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Colors, Media } from "ui";
+import { Colors, Media, Typography } from "ui";
 
 export const StyledInputForm = styled.form`
-  position: relative;
   grid-area: input;
+  position: relative;
 `;
 
 export const Wrapper = styled.div`
-  max-width: 1500px;
+  width: clamp(300px, 100%, 1100px);
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
@@ -30,10 +31,12 @@ export const Wrapper = styled.div`
 
 export const StyledInput = styled.input`
   padding: 18px 16px 16px 20px;
+  width: 1100px;
   border-radius: 10px;
   min-height: 56px;
-  width: 1000px;
-
+  background: ${Colors.GRAPHITE};
+  color: ${Colors.WHITE};
+  cursor: pointer;
   ${Media.XL} {
     width: 700px;
   }
@@ -43,6 +46,15 @@ export const StyledInput = styled.input`
   ${Media.M} {
     width: 340px;
   }
+  ${Media.XS} {
+    margin-left: 20px;
+  }
+  &-placeholder {
+    ${Typography.S1}
+  }
+  &:focus {
+    background: ${Colors.DARK};
+  }
 `;
 
 export const Container = styled.div`
@@ -51,8 +63,8 @@ export const Container = styled.div`
 
 export const StyledButton = styled.button`
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 16px;
+  right: 16px;
   background-color: transparent;
   cursor: pointer;
 `;
