@@ -6,6 +6,7 @@ export const StyledTemplate = styled.div`
   display: grid;
   grid-gap: 50px;
   height: 100vh;
+  max-width: 1920px;
 
   ${Media.XS} {
     flex-wrap: wrap;
