@@ -4,7 +4,8 @@ import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "store";
 import { getTheme } from "store/selectors";
-import { OutletBox, StyledBox, StyledHeaderGroup, StyledNav, StyledTemplate } from "./styles";
+import { StyledOutlet } from "./AuthTemplate/styles";
+import { Box, StyledBox, StyledHeaderGroup, StyledNav, StyledTemplate } from "./styles";
 
 export const MainTemplate = () => {
   const { theme } = useAppSelector(getTheme);
@@ -18,17 +19,18 @@ export const MainTemplate = () => {
           <InputSearch toggleModal={toggleModal} />
         </StyledHeaderGroup>
 
-        <OutletBox>
+        <Box>
           {width > 1100 && (
             <StyledNav>
               <Nav />
             </StyledNav>
           )}
-          <Outlet />
-        </OutletBox>
-
-        <Modal isOpen={isOpen} toggleModal={toggleModal} />
+          <StyledOutlet>
+            <Outlet />
+          </StyledOutlet>
+        </Box>
       </StyledBox>
+      <Modal isOpen={isOpen} toggleModal={toggleModal} />
     </StyledTemplate>
   );
 };
