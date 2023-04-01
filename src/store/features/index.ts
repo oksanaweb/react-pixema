@@ -9,6 +9,7 @@ import { nextMoviePage } from "./MovieSlice/MovieSlice";
 import { fetchNextPageMovies } from "./MovieSlice/MovieSlice";
 import { wipeOutMovies } from "./FilterSlice/FilterSlice";
 import { deleteMoviesParameters } from "./FilterSlice/FilterSlice";
+import { fetchSignInUser } from "./UserSlice/UserSlice";
 
 export {
   fetchMovies,
@@ -22,4 +23,5 @@ export {
   fetchNextPageMovies,
   wipeOutMovies,
   deleteMoviesParameters,
+  fetchSignInUser,
 };
