@@ -13,6 +13,7 @@ export const ContainerMovie = styled.div`
   }
   ${Media.XS} {
     align-items: flex-start;
+    padding-left: 20px;
   }
 `;
 

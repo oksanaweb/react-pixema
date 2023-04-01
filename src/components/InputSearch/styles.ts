@@ -5,50 +5,33 @@ import { Colors, Media, Typography } from "ui";
 export const StyledInputForm = styled.form`
   grid-area: input;
   position: relative;
+  width: 100%;
 `;
 
 export const Wrapper = styled.div`
-  width: clamp(300px, 100%, 1100px);
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-columns: minmax(auto, 250px) minmax(auto, 1180px) minmax(auto, 300px);
   place-items: center;
-  max-width: auto;
   grid-gap: 20px;
   padding: 20px 20px;
   grid-template-areas: "logo input  button";
   ${Media.XS} {
     grid-template-areas:
       "logo button"
-      "input input";
-  }
-
-  ${Media.XS} {
-    margin: auto;
+      "input input ";
+    grid-template-rows: repeat(2, minmax(30px, auto));
   }
 `;
 
 export const StyledInput = styled.input`
   padding: 18px 16px 16px 20px;
-  width: 1100px;
+  width: 100%;
   border-radius: 10px;
   min-height: 56px;
   background: ${Colors.GRAPHITE};
   color: ${Colors.WHITE};
   cursor: pointer;
-  ${Media.XL} {
-    width: 700px;
-  }
-  ${Media.L} {
-    width: 550px;
-  }
-  ${Media.M} {
-    width: 340px;
-  }
-  ${Media.XS} {
-    margin-left: 20px;
-  }
   &-placeholder {
     ${Typography.S1}
   }
@@ -59,6 +42,7 @@ export const StyledInput = styled.input`
 
 export const Container = styled.div`
   grid-area: input;
+  width: 100%;
 `;
 
 export const StyledButton = styled.button`
