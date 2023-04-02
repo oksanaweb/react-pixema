@@ -3,32 +3,47 @@ import React from "react";
 import { MovieDetailsInfo } from "types";
 
 import {
-  ButtonFavorite,
+  ButtonContainer,
   ContainerMovie,
   Description,
   DetailsWrap,
+  FavoriteButton,
   GenreTitle,
   InfoMovie,
   MovieDescription,
   MoviePlot,
   MoviePoster,
+  PosterContainer,
   PosterWrap,
   Rating,
   RatingBox,
   RatingImdb,
   RunTime,
+  ShareButton,
   SliderTitleWrapper,
   SliderTittle,
   SliderWrapper,
   Title,
   TitleMovie,
 } from "./styles";
+import { FavoriteIcon, ShareIcon } from "assets";
+import { Colors } from "ui";
+import { useAppDispatch, useAppSelector } from "store";
+import { getFavorites } from "store/selectors";
+import { addFavorites } from "store/features";
 
 interface DetailsProps {
   details: MovieDetailsInfo;
 }
 
 export const MovieDetails = ({ details }: DetailsProps) => {
+  const { favorites } = useAppSelector(getFavorites);
+  const dispatch = useAppDispatch;
+
+  const handleFavorite = () => {
+    dispatch();
+  };
+
   const {
     poster,
     title,
@@ -47,11 +62,20 @@ export const MovieDetails = ({ details }: DetailsProps) => {
   } = details;
   return (
     <ContainerMovie>
-      <PosterWrap>
-        <MoviePoster src={poster} />
-        <ButtonFavorite></ButtonFavorite>
-      </PosterWrap>
+      <PosterContainer>
+        <PosterWrap>
+          <MoviePoster src={poster} />
+        </PosterWrap>
+        <ButtonContainer>
+          <FavoriteButton type="button" onClick={handleFavorite}>
+            <FavoriteIcon />
+          </FavoriteButton>
 
+          <ShareButton>
+            <ShareIcon />
+          </ShareButton>
+        </ButtonContainer>
+      </PosterContainer>
       <DetailsWrap>
         <GenreTitle>{genre}</GenreTitle>
         <TitleMovie>{title}</TitleMovie>
@@ -98,12 +122,7 @@ export const MovieDetails = ({ details }: DetailsProps) => {
           </InfoMovie>
         </MovieDescription>
       </DetailsWrap>
-      <SliderWrapper>
-        <SliderTitleWrapper>
-          <SliderTittle>Recommendations</SliderTittle>
-        </SliderTitleWrapper>
-        <Slider />
-      </SliderWrapper>
+      //add slider
     </ContainerMovie>
   );
 };
