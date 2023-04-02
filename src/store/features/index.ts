@@ -10,6 +10,10 @@ import { fetchNextPageMovies } from "./MovieSlice/MovieSlice";
 import { wipeOutMovies } from "./FilterSlice/FilterSlice";
 import { deleteMoviesParameters } from "./FilterSlice/FilterSlice";
 import { fetchSignInUser } from "./UserSlice/UserSlice";
+import { toggleMode } from "./ThemeSlice/ThemeSlice";
+import { fetchNextPageTrends } from "./TrendsSlice/TrendsSlice";
+import { nextTrendsPage } from "./TrendsSlice/TrendsSlice";
+import { addFavorites } from "./FavoriteSlice/FavoriteSlice";
 
 export {
   fetchMovies,
@@ -24,4 +28,8 @@ export {
   wipeOutMovies,
   deleteMoviesParameters,
   fetchSignInUser,
+  toggleMode,
+  fetchNextPageTrends,
+  nextTrendsPage,
+  addFavorites,
 };
