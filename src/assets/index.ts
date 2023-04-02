@@ -11,6 +11,9 @@ import { ReactComponent as CloseIcon } from "./icons/close-cross-icon.svg";
 import BackgroundMovies from "./image/background-movies.png";
 import { ReactComponent as MenuIcon } from "./icons/burger-menu-icon.svg";
 import ImageNotFount from "./image/image-not-found-icon.png";
+import { ReactComponent as DarkLogo } from "./icons/pixema-dark-logo.svg";
+import { ReactComponent as FavoriteIcon } from "./icons/favorite-icon.svg";
+import { ReactComponent as ShareIcon } from "./icons/share-icon.svg";
 
 export {
   HomeIcon,
@@ -26,4 +29,7 @@ export {
   BackgroundMovies,
   MenuIcon,
   ImageNotFount,
+  DarkLogo,
+  FavoriteIcon,
+  ShareIcon,
 };
