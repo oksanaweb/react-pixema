@@ -16,6 +16,12 @@ export const StyledMovieList = styled.ul`
     justify-self: start;
   }
 
+  ${Media.Medium} {
+    grid-template-columns: repeat(2, minmax(200px, 300px));
+    grid-gap: 10px;
+    justify-self: start;
+  }
+
   ${Media.XS} {
     grid-template-columns: 1fr;
     justify-self: start;

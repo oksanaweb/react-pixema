@@ -34,6 +34,6 @@ export const UserNav = styled.div`
 `;
 
 export const StyledText = styled.p`
-  ${Typography.H2}
+  ${Typography.S1}
   color:${Colors.PRIMARY}
 `;

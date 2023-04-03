@@ -12,8 +12,8 @@ export const Wrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: minmax(auto, 250px) minmax(auto, 1180px) minmax(auto, 300px);
-  place-items: center;
   grid-gap: 20px;
+  place-items: center;
   padding: 20px 20px;
   grid-template-areas: "logo input  button";
   ${Media.XS} {

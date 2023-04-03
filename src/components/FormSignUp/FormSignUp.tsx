@@ -1,5 +1,5 @@
 import { Button } from "components";
-import React from "react";
+import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
@@ -9,6 +9,7 @@ import { getUserInfo } from "store/selectors";
 import {
   ButtonWrap,
   ErrorMessage,
+  ErrorReport,
   FormWrap,
   InputBox,
   InputConfirmPassword,
@@ -18,6 +19,7 @@ import {
   InputTitle,
   SignUpLink,
   SignUpTitle,
+  StyledError,
   StyledForm,
   StyledLink,
   TitleForm,
@@ -36,17 +38,22 @@ export const FormSignUp = () => {
     register,
     handleSubmit,
     reset,
+    watch,
+    getValues,
     formState: { errors },
   } = useForm<UserInfo>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
   const { errorMessage } = useAppSelector(getUserInfo);
+
   const onSubmit: SubmitHandler<UserInfo> = async (user) => {
     await dispatch(fetchSignUpUser(user)).unwrap();
     await navigate(ROUTE.Home);
     await reset();
   };
+
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
 
   return (
     <FormWrap>
@@ -81,13 +88,21 @@ export const FormSignUp = () => {
             {...register("confirmPassword", { required: true })}
           />
         </InputBox>
-        {errorMessage && <span>{errorMessage}</span>}
+        {errorMessage && <StyledError>{errorMessage}</StyledError>}
+
+        {getValues("password") &&
+          getValues("confirmPassword") &&
+          getValues("password") !== getValues("confirmPassword") && (
+            <ErrorReport>Passwords do not match</ErrorReport>
+          )}
+
         <ButtonWrap>
           <Button type="submit">Sign up</Button>
         </ButtonWrap>
+
+        {errors.confirmPassword && <p>Passwords do not match</p>}
         <SignUpLink>
           <SignUpTitle>Already have an account?</SignUpTitle>
-
           <StyledLink to={ROUTE.Sign_in}>Sign In</StyledLink>
         </SignUpLink>
       </StyledForm>
