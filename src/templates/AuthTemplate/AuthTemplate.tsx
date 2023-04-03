@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LogoWrap, StyledAuth, StyledCopyright, StyledOutlet } from "./styles";
 import { DarkLogo, MainLogo } from "assets";
 import { ROUTE } from "router";
 import { Outlet } from "react-router-dom";
 import { getTheme } from "store/selectors";
-import { useAppSelector } from "store";
+import { useAppDispatch, useAppSelector } from "store";
+import { BasicSwitch } from "components";
+import { toggleMode } from "store/features";
 
 export const AuthTemplate = () => {
   const { theme } = useAppSelector(getTheme);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    document.documentElement.setAttribute("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    dispatch(toggleMode());
+  };
 
   return (
     <StyledAuth>
@@ -17,6 +27,7 @@ export const AuthTemplate = () => {
       <StyledOutlet>
         <Outlet />
       </StyledOutlet>
+      <BasicSwitch onClick={toggleTheme} />
       <StyledCopyright>© All Rights Reserved</StyledCopyright>
     </StyledAuth>
   );
