@@ -14,6 +14,7 @@ import { toggleMode } from "./ThemeSlice/ThemeSlice";
 import { fetchNextPageTrends } from "./TrendsSlice/TrendsSlice";
 import { nextTrendsPage } from "./TrendsSlice/TrendsSlice";
 import { addFavorites } from "./FavoriteSlice/FavoriteSlice";
+import { fetchResetPassword } from "./UserSlice/UserSlice";
 
 export {
   fetchMovies,
@@ -32,4 +33,5 @@ export {
   fetchNextPageTrends,
   nextTrendsPage,
   addFavorites,
+  fetchResetPassword,
 };
