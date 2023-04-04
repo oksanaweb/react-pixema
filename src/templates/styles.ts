@@ -41,8 +41,7 @@ export const StyledOutlet = styled.div``;
 export const Box = styled.div`
   padding-top: 120px;
   display: flex;
-
-  grid-gap: 170px;
+  grid-gap: 140px;
 
   ${Media.XS} {
     padding-top: 200px;
