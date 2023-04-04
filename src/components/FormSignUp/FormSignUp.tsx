@@ -1,5 +1,4 @@
 import { Button } from "components";
-import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
@@ -29,7 +28,7 @@ import { emailValidate, nameValidate, passwordValidate } from "services";
 interface UserInfo {
   email: string;
   password: string;
-  name: string;
+  userName: string;
   confirmPassword: string;
 }
 
@@ -48,6 +47,7 @@ export const FormSignUp = () => {
 
   const onSubmit: SubmitHandler<UserInfo> = async (user) => {
     await dispatch(fetchSignUpUser(user)).unwrap();
+    await localStorage.setItem("user", JSON.stringify(user)); //not work
     await navigate(ROUTE.Home);
     await reset();
   };
@@ -62,8 +62,8 @@ export const FormSignUp = () => {
 
         <InputBox>
           <InputTitle>Name</InputTitle>
-          <InputName placeholder="Name" {...register("name", nameValidate())} />
-          {errors.name?.message && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+          <InputName placeholder="Name" {...register("userName", nameValidate())} />
+          {errors.userName?.message && <ErrorMessage>{errors.userName.message}</ErrorMessage>}
         </InputBox>
 
         <InputBox>

@@ -21,6 +21,7 @@ import { Loader } from "./Loader/Loader";
 import { LoaderMoreFilms } from "./LoaderMoreFilms/LoaderMoreFilms";
 import { SettingForm } from "./SettingsForm/SettingForm";
 import { BasicSwitch } from "./BasicSwitch/BasicSwitch";
+import { SettingFormModal } from "./SettingFormModal/SettingFormModal.";
 
 export {
   MovieList,
@@ -46,4 +47,5 @@ export {
   LoaderMoreFilms,
   SettingForm,
   BasicSwitch,
+  SettingFormModal,
 };

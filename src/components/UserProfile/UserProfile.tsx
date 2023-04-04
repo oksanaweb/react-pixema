@@ -1,13 +1,27 @@
 import { ArrowRightIcon, UserIcon } from "assets";
-import { CustomLink } from "components";
 import React from "react";
 import { ROUTE } from "router";
-import { useAppSelector } from "store";
+import { useAppDispatch, useAppSelector } from "store";
 import { getUserInfo } from "store/selectors";
-import { StyledText, StyledUser, StyledUserIcon, UserNav, UserTextContainer } from "./styles";
+import {
+  ArrowButton,
+  LogOut,
+  StyledLink,
+  StyledMenu,
+  StyledText,
+  StyledTitle,
+  StyledUser,
+  StyledUserIcon,
+  UserNav,
+  UserTitle,
+  Wrap,
+} from "./styles";
+import { useToggle } from "hooks";
 
 export const UserProfile = () => {
-  const { isAuth } = useAppSelector(getUserInfo);
+  const { isAuth, email } = useAppSelector(getUserInfo);
+  const [toggle, setToggle] = useToggle(false);
+
   return (
     <StyledUser>
       <StyledUserIcon>
@@ -16,13 +30,41 @@ export const UserProfile = () => {
 
       <UserNav>
         {isAuth ? (
-          <CustomLink to={ROUTE.Settings}>
-            <StyledText>Edit Profile</StyledText>
-          </CustomLink>
+          <Wrap>
+            <StyledTitle>
+              <UserTitle>{email}</UserTitle>
+            </StyledTitle>
+
+            <ArrowButton onClick={setToggle}>
+              <ArrowRightIcon />
+            </ArrowButton>
+          </Wrap>
         ) : (
-          <CustomLink to={ROUTE.Sign_in}>
-            <StyledText>Sign in</StyledText>
-          </CustomLink>
+          <Wrap>
+            <StyledTitle>
+              <StyledLink to={ROUTE.Sign_in}>
+                <StyledText>Sign in</StyledText>
+              </StyledLink>
+            </StyledTitle>
+
+            <ArrowButton onClick={setToggle}>
+              <ArrowRightIcon />
+            </ArrowButton>
+          </Wrap>
+        )}
+        {toggle && (
+          <StyledMenu>
+            {isAuth ? (
+              <>
+                <StyledLink to={ROUTE.Settings}>Edit</StyledLink>
+                <LogOut type="button">Log out</LogOut>
+              </> //add log out in user slice
+            ) : (
+              <>
+                <StyledLink to={ROUTE.Sign_up}>Sign up</StyledLink>
+              </>
+            )}
+          </StyledMenu>
         )}
       </UserNav>
     </StyledUser>

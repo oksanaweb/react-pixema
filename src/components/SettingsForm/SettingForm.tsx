@@ -5,6 +5,7 @@ import {
   ButtonSave,
   Container,
   ErrorMessage,
+  ErrorReport,
   InputTitle,
   PasswordBox,
   PasswordContainer,
@@ -19,6 +20,11 @@ import { InputBox } from "components/FormSignIn/styles";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { emailValidate, nameValidate, passwordValidate } from "services";
 import { useAppDispatch } from "store";
+import { fetchUpdateEmail, fetchUpdatePassword, updateUserName } from "store/features";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "router";
+import { useToggle } from "hooks";
+import { SettingFormModal } from "components";
 
 interface FormValues {
   userName: string;
@@ -30,8 +36,24 @@ interface FormValues {
 
 export const SettingForm = () => {
   const dispatch = useAppDispatch();
-  const onSubmit: SubmitHandler<FormValues> = () => {
-    //localstorage of user
+  const navigate = useNavigate();
+  const [isOpen, setToggle] = useToggle(false);
+
+  const onSubmit: SubmitHandler<FormValues> = async (user) => {
+    try {
+      await dispatch(updateUserName(user.userName));
+      await dispatch(fetchUpdateEmail(user)).unwrap();
+      await dispatch(fetchUpdatePassword(user)).unwrap();
+      setTimeout(() => {
+        setToggle();
+      }, 1000);
+      setTimeout(() => {
+        navigate(ROUTE.Home);
+      }, 3500);
+    } catch (error) {
+      console.error(error);
+    }
+    //localstorage ??
   };
 
   const {
@@ -39,6 +61,7 @@ export const SettingForm = () => {
     handleSubmit,
     watch,
     formState: { errors },
+    getValues,
   } = useForm<FormValues>();
 
   const password = watch("password", "");
@@ -109,6 +132,12 @@ export const SettingForm = () => {
                 {errors.confirmPassword?.message && (
                   <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
                 )}
+
+                {getValues("newPassword") &&
+                  getValues("confirmPassword") &&
+                  getValues("newPassword") !== getValues("confirmPassword") && (
+                    <ErrorReport>Passwords do not match</ErrorReport>
+                  )}
               </InputBox>
             </WrapInput>
           </PasswordContainer>
@@ -119,6 +148,7 @@ export const SettingForm = () => {
           <ButtonSave type="submit">Save</ButtonSave>
         </ButtonBox>
       </StyledForm>
+      <SettingFormModal toggleModal={setToggle} isOpen={isOpen} />
     </Container>
   );
 };
