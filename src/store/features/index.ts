@@ -15,6 +15,9 @@ import { fetchNextPageTrends } from "./TrendsSlice/TrendsSlice";
 import { nextTrendsPage } from "./TrendsSlice/TrendsSlice";
 import { addFavorites } from "./FavoriteSlice/FavoriteSlice";
 import { fetchResetPassword } from "./UserSlice/UserSlice";
+import { fetchUpdateEmail } from "./UserSlice/UserSlice";
+import { fetchUpdatePassword } from "./UserSlice/UserSlice";
+import { updateUserName } from "./UserSlice/UserSlice";
 
 export {
   fetchMovies,
@@ -34,4 +37,7 @@ export {
   nextTrendsPage,
   addFavorites,
   fetchResetPassword,
+  fetchUpdateEmail,
+  fetchUpdatePassword,
+  updateUserName,
 };

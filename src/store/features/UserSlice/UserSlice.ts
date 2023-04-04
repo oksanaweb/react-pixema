@@ -20,6 +20,7 @@ interface UserState {
   isAuth: boolean;
   isPendingAuth: boolean;
   isResetPassword: boolean;
+  name: string | null;
 }
 
 const initialState: UserState = {
@@ -30,19 +31,22 @@ const initialState: UserState = {
   isAuth: false,
   isPendingAuth: false,
   isResetPassword: false,
+  name: null,
 };
 
 export const fetchSignUpUser = createAsyncThunk<
-  Pick<UserState, "email" | "creationTime">,
-  UserInfo,
+  Pick<UserState, "email" | "creationTime" | "name">,
+  { email: string; password: string; userName: string },
   { rejectValue: FirebaseErrorMessage }
->("user/fetchSignUpUser", async ({ email, password }, { rejectWithValue }) => {
+>("user/fetchSignUpUser", async ({ email, password, userName }, { rejectWithValue }) => {
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    const name = userName as string;
 
     return {
       email: user.email,
       creationTime: user.metadata.creationTime ?? null,
+      name,
     };
   } catch (error) {
     const firebaseError = error as FirebaseError;
@@ -120,7 +124,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    updateUserUserName: (state, action: PayloadAction<string>) => {
+    updateUserName: (state, action: PayloadAction<string>) => {
       if (action.payload) state.email = action.payload;
     },
   },
@@ -132,6 +136,7 @@ const userSlice = createSlice({
     builder.addCase(fetchSignUpUser.fulfilled, (state, { payload }) => {
       state.email = payload.email;
       state.creationTime = payload.creationTime;
+      state.name = payload.name;
       state.isLoading = false;
       state.isAuth = true;
     });
@@ -212,4 +217,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { updateUserName } = userSlice.actions;
 export default userSlice.reducer;
