@@ -8,8 +8,7 @@ import { StyledBoxSearch } from "./styles";
 export const SearchPage = () => {
   const dispatch = useAppDispatch();
 
-  const { isLoading, parameters, movies, error } =
-    useAppSelector(getMoviesByFilters);
+  const { isLoading, parameters, movies, error } = useAppSelector(getMoviesByFilters);
 
   useEffect(() => {
     if (parameters.s || parameters.y || parameters.type)
