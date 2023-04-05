@@ -18,6 +18,7 @@ import { fetchResetPassword } from "./UserSlice/UserSlice";
 import { fetchUpdateEmail } from "./UserSlice/UserSlice";
 import { fetchUpdatePassword } from "./UserSlice/UserSlice";
 import { updateUserName } from "./UserSlice/UserSlice";
+import { fetchSignOut } from "./UserSlice/UserSlice";
 
 export {
   fetchMovies,
@@ -40,4 +41,5 @@ export {
   fetchUpdateEmail,
   fetchUpdatePassword,
   updateUserName,
+  fetchSignOut,
 };

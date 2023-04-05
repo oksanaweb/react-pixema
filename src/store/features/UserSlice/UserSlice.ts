@@ -6,6 +6,7 @@ import {
   getAuth,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signOut,
   updateEmail,
   updatePassword,
 } from "firebase/auth";
@@ -120,6 +121,20 @@ export const fetchUpdatePassword = createAsyncThunk<
   }
 });
 
+export const fetchSignOut = createAsyncThunk<
+  void,
+  undefined,
+  { rejectValue: FirebaseErrorMessage }
+>("user/fetchSignOut", async (_, { rejectWithValue }) => {
+  try {
+    const auth = getAuth();
+    await signOut(auth);
+  } catch (error) {
+    const firebaseError = error as FirebaseError;
+    return rejectWithValue(getFirebaseErrorMessage(firebaseError.code));
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -212,6 +227,23 @@ const userSlice = createSlice({
       if (payload) {
         state.isPendingAuth = false;
         state.errorMessage = payload;
+      }
+    });
+    builder.addCase(fetchSignOut.pending, (state) => {
+      state.isPendingAuth = true;
+      state.isAuth = false;
+      state.errorMessage = null;
+    });
+    builder.addCase(fetchSignOut.fulfilled, (state) => {
+      state.isPendingAuth = false;
+      state.errorMessage = null;
+      state.isAuth = false;
+    });
+    builder.addCase(fetchSignOut.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isPendingAuth = false;
+        state.errorMessage = payload;
+        state.isAuth = true;
       }
     });
   },
