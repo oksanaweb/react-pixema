@@ -19,7 +19,6 @@ export const StyledTemplate = styled.div`
 
 export const StyledHeaderGroup = styled.div`
   position: fixed;
-  width: 100%;
   place-items: center;
   ${Media.XS} {
     margin: 0 auto;
