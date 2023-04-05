@@ -13,8 +13,7 @@ export const StyledButton = styled.button`
   background-color: transparent;
 `;
 
-export const UserTextContainer = styled(Link)`
-  padding: 15px 0;
+export const UserTextContainer = styled.div`
   width: 100px;
   margin-left: 10px;
 `;
@@ -37,9 +36,12 @@ export const UserNav = styled.div`
   margin-left: 10px;
 `;
 
-export const StyledText = styled.p`
-  ${Typography.S1};
-  color: ${Colors.WHITE};
+export const StyledText = styled.div`
+  width: 150px;
+  padding: 20px 30px;
+  text-align: center;
+  border-radius: 10px;
+  background: ${Colors.PRIMARY};
 `;
 
 export const StyledMenu = styled.div`
@@ -52,13 +54,14 @@ export const StyledMenu = styled.div`
 `;
 
 export const LogOut = styled.button`
-  padding: 10px 40px;
   width: 150px;
-  background-color: ${Colors.SECONDARY};
-  margin-top:7px;
-  border-radius:10px;
+  padding: 20px 30px;
   ${Typography.S2};
-  color:${Colors.WHITE}
+  margin-left: 40px;
+  text-align: center;
+  border-radius: 10px;
+  background: ${Colors.PRIMARY};
+  color: ${Colors.WHITE};
   cursor: pointer;
 `;
 
@@ -84,9 +87,8 @@ export const StyledLink = styled(Link)`
   width: 150px;
   text-align: center;
   border-radius: 10px;
-  background: ${Colors.SECONDARY};
+  background-color:${Colors.SECONDARY}
   ${Typography.S2}
   color: ${Colors.WHITE};
-  ${Typography.S1};
   cursor: pointer;
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonBox,
   ButtonCancel,
@@ -11,6 +11,7 @@ import {
   PasswordContainer,
   ProfileBox,
   ProfileContainer,
+  StyledError,
   StyledForm,
   StyledInput,
   Title,
@@ -19,12 +20,13 @@ import {
 import { InputBox } from "components/FormSignIn/styles";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { emailValidate, nameValidate, passwordValidate } from "services";
-import { useAppDispatch } from "store";
+import { useAppDispatch, useAppSelector } from "store";
 import { fetchUpdateEmail, fetchUpdatePassword, updateUserName } from "store/features";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { useToggle } from "hooks";
 import { SettingFormModal } from "components";
+import { getUserInfo } from "store/selectors";
 
 interface FormValues {
   userName: string;
@@ -34,16 +36,27 @@ interface FormValues {
   confirmPassword: string;
 }
 
-export const SettingForm = () => {
+export const SettingsForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { errorMessage } = useAppSelector(getUserInfo);
   const [isOpen, setToggle] = useToggle(false);
+  const [savedData, setSavedData] = useState<FormValues>();
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("userData");
+    if (savedData) {
+      setSavedData(JSON.parse(savedData));
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<FormValues> = async (user) => {
     try {
       await dispatch(updateUserName(user.userName));
       await dispatch(fetchUpdateEmail(user)).unwrap();
       await dispatch(fetchUpdatePassword(user)).unwrap();
+      setSavedData(user);
+      localStorage.setItem("userData", JSON.stringify(user));
       setTimeout(() => {
         setToggle();
       }, 1000);
@@ -56,16 +69,18 @@ export const SettingForm = () => {
     //localstorage ??
   };
 
+  const handleCancel = () => {
+    reset();
+  };
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
     getValues,
   } = useForm<FormValues>();
-
-  const password = watch("password", "");
-  console.log(watch("password"));
 
   return (
     <Container>
@@ -139,12 +154,15 @@ export const SettingForm = () => {
                     <ErrorReport>Passwords do not match</ErrorReport>
                   )}
               </InputBox>
+              {errorMessage && <StyledError>{errorMessage}</StyledError>}
             </WrapInput>
           </PasswordContainer>
         </PasswordBox>
 
         <ButtonBox>
-          <ButtonCancel type="button">Cancel</ButtonCancel>
+          <ButtonCancel type="button" onClick={handleCancel}>
+            Cancel
+          </ButtonCancel>
           <ButtonSave type="submit">Save</ButtonSave>
         </ButtonBox>
       </StyledForm>

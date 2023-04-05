@@ -17,10 +17,18 @@ import {
   Wrap,
 } from "./styles";
 import { useToggle } from "hooks";
+import { fetchSignOut } from "store/features";
+import { useNavigate } from "react-router-dom";
 
 export const UserProfile = () => {
   const { isAuth, email } = useAppSelector(getUserInfo);
   const [toggle, setToggle] = useToggle(false);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleOut = () => {
+    dispatch(fetchSignOut());
+  };
 
   return (
     <StyledUser>
@@ -42,9 +50,7 @@ export const UserProfile = () => {
         ) : (
           <Wrap>
             <StyledTitle>
-              <StyledLink to={ROUTE.Sign_in}>
-                <StyledText>Sign in</StyledText>
-              </StyledLink>
+              <StyledLink to={ROUTE.Sign_in}>Sign in</StyledLink>
             </StyledTitle>
 
             <ArrowButton onClick={setToggle}>
@@ -56,12 +62,19 @@ export const UserProfile = () => {
           <StyledMenu>
             {isAuth ? (
               <>
-                <StyledLink to={ROUTE.Settings}>Edit</StyledLink>
-                <LogOut type="button">Log out</LogOut>
+                <StyledLink to={ROUTE.Settings}>
+                  <StyledText>Edit</StyledText>
+                </StyledLink>
+
+                <LogOut type="button" onClick={handleOut}>
+                  Log out
+                </LogOut>
               </> //add log out in user slice
             ) : (
               <>
-                <StyledLink to={ROUTE.Sign_up}>Sign up</StyledLink>
+                <StyledLink to={ROUTE.Sign_up}>
+                  <StyledText> Sign up</StyledText>
+                </StyledLink>
               </>
             )}
           </StyledMenu>

@@ -19,9 +19,11 @@ import { FormSignUp } from "./FormSignUp/FormSignUp";
 import { FormReset } from "./FormReset/FormReset";
 import { Loader } from "./Loader/Loader";
 import { LoaderMoreFilms } from "./LoaderMoreFilms/LoaderMoreFilms";
-import { SettingForm } from "./SettingsForm/SettingForm";
+import { SettingsForm } from "./SettingsForm/SettingsForm";
 import { BasicSwitch } from "./BasicSwitch/BasicSwitch";
 import { SettingFormModal } from "./SettingFormModal/SettingFormModal.";
+import { TrendList } from "./TrendList/TrendList";
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 
 export {
   MovieList,
@@ -45,7 +47,9 @@ export {
   FormReset,
   Loader,
   LoaderMoreFilms,
-  SettingForm,
   BasicSwitch,
   SettingFormModal,
+  SettingsForm,
+  TrendList,
+  BurgerMenu,
 };

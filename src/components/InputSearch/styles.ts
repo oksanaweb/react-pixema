@@ -71,7 +71,9 @@ export const StyledUserProfile = styled.div`
 `;
 
 export const BurgerWrap = styled.div`
-  justify-self: end;
+  ${Media.XS} {
+    margin-left: 300px;
+  }
 `;
 
 export const Box = styled.div`

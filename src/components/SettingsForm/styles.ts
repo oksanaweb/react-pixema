@@ -108,3 +108,8 @@ export const ErrorReport = styled.p`
   color: ${Colors.ERROR};
   ${Typography.S3};
 `;
+
+export const StyledError = styled.p`
+  color: ${Colors.ERROR};
+  ${Typography.S3};
+`;

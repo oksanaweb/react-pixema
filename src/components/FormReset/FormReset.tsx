@@ -9,18 +9,20 @@ import {
   InputEmail,
   InputTitle,
   Message,
+  StyledError,
   StyledForm,
   StyledLink,
   StyledMessage,
   Title,
   TitleForm,
 } from "./styles";
-import { useAppDispatch } from "store";
+import { useAppDispatch, useAppSelector } from "store";
 import { emailValidate } from "services";
 import { fetchResetPassword } from "store/features";
 import { useToggle } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
+import { getUserInfo } from "store/selectors";
 
 interface FormValues {
   email: string;
@@ -29,6 +31,7 @@ interface FormValues {
 export const FormReset = () => {
   const [isToggle, setToggle] = useToggle();
   const navigate = useNavigate();
+  const { errorMessage } = useAppSelector(getUserInfo);
 
   const {
     register,
@@ -54,7 +57,7 @@ export const FormReset = () => {
           <InputEmail placeholder="Your Email" {...register("email", emailValidate())} />
           {errors.email?.message && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </InputBox>
-
+        {errorMessage && <StyledError>{errorMessage}</StyledError>}
         <ButtonWrap>
           <Button type="submit">Reset Password</Button>
         </ButtonWrap>

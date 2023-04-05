@@ -1,6 +1,6 @@
 import { DarkLogo, InputIcon, MainLogo, MenuIcon } from "assets";
-import { UserProfile } from "components";
-import { useWindowSize } from "hooks";
+import { BurgerMenu, UserProfile } from "components";
+import { useToggle, useWindowSize } from "hooks";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ROUTE } from "router";
@@ -34,6 +34,7 @@ export const InputSearch = ({ toggleModal }: InputProps) => {
   const navigate = useNavigate();
   const { theme } = useAppSelector(getTheme);
   const { register, handleSubmit, reset } = useForm<FormValues>();
+  const [isMenuOpen, menuToggle] = useToggle(false);
 
   const openModal = () => {
     toggleModal(true);
@@ -70,12 +71,13 @@ export const InputSearch = ({ toggleModal }: InputProps) => {
           </StyledUserProfile>
         ) : (
           <BurgerWrap>
-            <BurgerButton>
+            <BurgerButton onClick={menuToggle}>
               <MenuIcon />
             </BurgerButton>
           </BurgerWrap>
         )}
       </Box>
+      {isMenuOpen === true && <BurgerMenu menuToggle={menuToggle} isMenuOpen={isMenuOpen} />}
     </Wrapper>
   );
 };

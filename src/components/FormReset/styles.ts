@@ -73,3 +73,8 @@ export const StyledLink = styled(Link)`
   ${Typography.S2}
   color:${Colors.PRIMARY};
 `;
+
+export const StyledError = styled.p`
+  color: ${Colors.ERROR};
+  ${Typography.S3};
+`;
