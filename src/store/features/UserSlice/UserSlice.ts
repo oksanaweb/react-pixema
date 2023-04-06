@@ -11,7 +11,6 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { FirebaseErrorMessage, getFirebaseErrorMessage } from "utils/firebaseAuthError";
-import { UserInfo } from "types/types";
 
 interface UserState {
   email: string | null;

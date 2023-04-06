@@ -4,14 +4,14 @@ import { transformDetailsMovies, transformMoviesApi } from "mappers";
 import { Movie, MovieDetailsInfo } from "types/types";
 
 interface DetailsState {
-  details: MovieDetailsInfo;
+  movieDetails: MovieDetailsInfo;
   isLoading: boolean;
   error: string | null;
   recommendations: Movie[];
 }
 
 const initialState: DetailsState = {
-  details: {} as MovieDetailsInfo,
+  movieDetails: {} as MovieDetailsInfo,
   isLoading: false,
   error: null,
   recommendations: [],
@@ -61,7 +61,7 @@ const movieDetailsSlice = createSlice({
     });
     builder.addCase(fetchMoviesDetails.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.details = payload;
+      state.movieDetails = payload;
     });
 
     builder.addCase(fetchMoviesDetails.rejected, (state, { payload }) => {

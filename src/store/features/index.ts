@@ -19,6 +19,7 @@ import { fetchUpdateEmail } from "./UserSlice/UserSlice";
 import { fetchUpdatePassword } from "./UserSlice/UserSlice";
 import { updateUserName } from "./UserSlice/UserSlice";
 import { fetchSignOut } from "./UserSlice/UserSlice";
+import { deleteFavorites } from "./FavoriteSlice/FavoriteSlice";
 
 export {
   fetchMovies,
@@ -42,4 +43,5 @@ export {
   fetchUpdatePassword,
   updateUserName,
   fetchSignOut,
+  deleteFavorites,
 };
