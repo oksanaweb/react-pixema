@@ -1,4 +1,4 @@
-import { LoaderMoreFilms, MovieList, TrendList } from "components";
+import { LoaderMoreFilms, TrendList } from "components";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store";
 import { fetchMoviesTrends, fetchNextPageTrends, nextTrendsPage } from "store/features";
