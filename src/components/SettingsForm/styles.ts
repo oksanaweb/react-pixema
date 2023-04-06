@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors, Typography } from "ui";
+import { Colors, Media, Typography } from "ui";
 
 export const Container = styled.div`
   max-width: 1186px;
@@ -9,6 +9,9 @@ export const Container = styled.div`
 export const StyledForm = styled.form`
   display: grid;
   grid-gap: 40px;
+  ${Media.M} {
+    margin-left: 20px;
+  }
 `;
 
 export const ProfileBox = styled.div`
@@ -19,10 +22,14 @@ export const ProfileBox = styled.div`
 export const ProfileContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-  grid-gap: 40px;
+  grid-gap: 30px;
   padding: 20px 20px;
   border-radius: 10px;
   background: ${Colors.DARK};
+  ${Media.M} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.p`
@@ -49,6 +56,9 @@ export const StyledInput = styled.input`
     outline: 2px ${Colors.PRIMARY};
     outline-style: solid;
   }
+  &-placeholder {
+    ${Typography.S3}
+  }
 `;
 
 export const PasswordBox = styled.div``;
@@ -56,10 +66,14 @@ export const PasswordBox = styled.div``;
 export const PasswordContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-  grid-gap: 40px;
+  gap: 30px;
   padding: 20px 20px;
   border-radius: 10px;
   background: ${Colors.DARK};
+  ${Media.M} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const WrapInput = styled.div`
@@ -76,7 +90,7 @@ export const ButtonBox = styled.div`
 `;
 
 export const ButtonCancel = styled.button`
-  max-width: 250px;
+  max-width: 200px;
   width: 100%;
   padding: 16px 0;
   border: none;
@@ -88,7 +102,7 @@ export const ButtonCancel = styled.button`
 `;
 
 export const ButtonSave = styled.button`
-  max-width: 250px;
+  max-width: 200px;
   padding: 16px 0;
   width: 100%;
   color: ${Colors.WHITE};

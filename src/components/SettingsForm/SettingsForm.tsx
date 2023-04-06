@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   ButtonBox,
   ButtonCancel,
@@ -41,22 +41,19 @@ export const SettingsForm = () => {
   const navigate = useNavigate();
   const { errorMessage } = useAppSelector(getUserInfo);
   const [isOpen, setToggle] = useToggle(false);
-  const [savedData, setSavedData] = useState<FormValues>();
+  //const [savedData, setSavedData] = useState<FormValues>();
 
-  useEffect(() => {
-    const savedData = localStorage.getItem("userData");
-    if (savedData) {
-      setSavedData(JSON.parse(savedData));
-    }
-  }, []);
+  //useEffect(() => {
+  //const savedData = localStorage.getItem("user");
+  //if (savedData) {
+  //setSavedData(JSON.parse(savedData));}}, []);
 
   const onSubmit: SubmitHandler<FormValues> = async (user) => {
     try {
       await dispatch(updateUserName(user.userName));
       await dispatch(fetchUpdateEmail(user)).unwrap();
       await dispatch(fetchUpdatePassword(user)).unwrap();
-      setSavedData(user);
-      localStorage.setItem("userData", JSON.stringify(user));
+      //localStorage.setItem("user", JSON.stringify(user));
       setTimeout(() => {
         setToggle();
       }, 1000);
@@ -65,8 +62,7 @@ export const SettingsForm = () => {
       }, 3500);
     } catch (error) {
       console.error(error);
-    }
-    //localstorage ??
+    } //localstorage ??
   };
 
   const handleCancel = () => {
@@ -76,7 +72,6 @@ export const SettingsForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
     getValues,

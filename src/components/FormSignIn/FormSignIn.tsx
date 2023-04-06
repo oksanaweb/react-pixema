@@ -37,7 +37,6 @@ export const FormSignIn = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<FormValues>();
 

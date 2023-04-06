@@ -37,7 +37,6 @@ export const FormSignUp = () => {
     register,
     handleSubmit,
     reset,
-    watch,
     getValues,
     formState: { errors },
   } = useForm<UserInfo>();
@@ -47,13 +46,10 @@ export const FormSignUp = () => {
 
   const onSubmit: SubmitHandler<UserInfo> = async (user) => {
     await dispatch(fetchSignUpUser(user)).unwrap();
-    await localStorage.setItem("user", JSON.stringify(user)); //not work
+    localStorage.setItem("user", JSON.stringify(user));
     await navigate(ROUTE.Home);
     await reset();
   };
-
-  const password = watch("password");
-  const confirmPassword = watch("confirmPassword");
 
   return (
     <FormWrap>
@@ -95,7 +91,6 @@ export const FormSignUp = () => {
           getValues("password") !== getValues("confirmPassword") && (
             <ErrorReport>Passwords do not match</ErrorReport>
           )}
-
         <ButtonWrap>
           <Button type="submit">Sign up</Button>
         </ButtonWrap>

@@ -18,13 +18,11 @@ import {
 } from "./styles";
 import { useToggle } from "hooks";
 import { fetchSignOut } from "store/features";
-import { useNavigate } from "react-router-dom";
 
 export const UserProfile = () => {
   const { isAuth, email } = useAppSelector(getUserInfo);
   const [toggle, setToggle] = useToggle(false);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const handleOut = () => {
     dispatch(fetchSignOut());

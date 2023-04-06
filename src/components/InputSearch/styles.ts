@@ -14,11 +14,11 @@ export const Wrapper = styled.div`
   grid-template-columns: minmax(auto, 240px) minmax(auto, 1050px) minmax(auto, 480px);
   place-items: center;
   padding: 20px 20px;
-  grid-template-areas: "logo input  button";
+  grid-template-areas: "logo input button";
   ${Media.XS} {
     grid-template-areas:
       "logo button"
-      "input input ";
+      "input input";
     grid-template-rows: repeat(2, minmax(30px, auto));
   }
 `;
@@ -72,7 +72,7 @@ export const StyledUserProfile = styled.div`
 
 export const BurgerWrap = styled.div`
   ${Media.XS} {
-    margin-left: 300px;
+    margin-left: 80px;
   }
 `;
 

@@ -24,6 +24,7 @@ import { BasicSwitch } from "./BasicSwitch/BasicSwitch";
 import { SettingFormModal } from "./SettingFormModal/SettingFormModal.";
 import { TrendList } from "./TrendList/TrendList";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import { FavoriteList } from "./FavoriteList/FavoriteList";
 
 export {
   MovieList,
@@ -52,4 +53,5 @@ export {
   SettingsForm,
   TrendList,
   BurgerMenu,
+  FavoriteList,
 };

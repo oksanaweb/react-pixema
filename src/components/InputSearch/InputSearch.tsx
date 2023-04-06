@@ -1,7 +1,7 @@
 import { DarkLogo, InputIcon, MainLogo, MenuIcon } from "assets";
 import { BurgerMenu, UserProfile } from "components";
 import { useToggle, useWindowSize } from "hooks";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ROUTE } from "router";
 import {
