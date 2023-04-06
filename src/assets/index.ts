@@ -14,6 +14,8 @@ import ImageNotFount from "./image/image-not-found-icon.png";
 import { ReactComponent as DarkLogo } from "./icons/pixema-dark-logo.svg";
 import { ReactComponent as FavoriteIcon } from "./icons/favorite-icon.svg";
 import { ReactComponent as ShareIcon } from "./icons/share-icon.svg";
+import { ReactComponent as DeleteFavoriteIcon } from "./icons/delete-favorites-icon.svg";
+import NotFoundMovie from "./image/not-found-favorite-image.png";
 
 export {
   HomeIcon,
@@ -32,4 +34,6 @@ export {
   DarkLogo,
   FavoriteIcon,
   ShareIcon,
+  DeleteFavoriteIcon,
+  NotFoundMovie,
 };
