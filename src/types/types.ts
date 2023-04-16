@@ -107,13 +107,4 @@ interface User {
   confirmPassword: string;
 }
 
-export type {
-  MovieApi,
-  Movie,
-  MovieResponse,
-  ResponseData,
-  MovieDetailsApi,
-  MovieDetailsInfo,
-  UserInfo,
-  User,
-};
+export type { MovieApi, Movie, MovieResponse, ResponseData, MovieDetailsApi, MovieDetailsInfo, UserInfo, User };
