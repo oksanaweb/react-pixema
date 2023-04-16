@@ -1,9 +1,9 @@
-import { MovieList } from "components";
+import { Loader, LoaderMoreFilms, MovieList, NotFoundMessage } from "components";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store";
-import { fetchMoviesByParameter } from "store/features";
+import { fetchMoviesByParameter, showNextPage } from "store/features";
 import { getMoviesByFilters } from "store/selectors";
-import { StyledBoxSearch } from "./styles";
+import { StyledBoxSearch, StyledButton } from "./styles";
 
 export const SearchPage = () => {
   const dispatch = useAppDispatch();
@@ -11,18 +11,28 @@ export const SearchPage = () => {
   const { isLoading, parameters, movies, error } = useAppSelector(getMoviesByFilters);
 
   useEffect(() => {
-    if (parameters.s || parameters.y || parameters.type)
-      dispatch(fetchMoviesByParameter(parameters));
+    if (parameters.s || parameters.y || parameters.type) dispatch(fetchMoviesByParameter(parameters));
   }, [dispatch, parameters]);
+
+  const handleSearch = () => {
+    dispatch(showNextPage(true));
+  };
 
   return (
     <div>
       <StyledBoxSearch>
-        {isLoading && <div>isload....</div>}
+        {isLoading && <Loader />}
 
-        {error && <span>{error}</span>}
+        {error && <NotFoundMessage />}
 
         {movies?.length > 0 && <MovieList movies={movies} />}
+
+        {!isLoading && !error && (
+          <StyledButton onClick={handleSearch}>
+            Show More
+            {isLoading && <LoaderMoreFilms />}
+          </StyledButton>
+        )}
       </StyledBoxSearch>
     </div>
   );
