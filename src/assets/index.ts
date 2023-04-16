@@ -16,6 +16,7 @@ import { ReactComponent as FavoriteIcon } from "./icons/favorite-icon.svg";
 import { ReactComponent as ShareIcon } from "./icons/share-icon.svg";
 import { ReactComponent as DeleteFavoriteIcon } from "./icons/delete-favorites-icon.svg";
 import NotFoundMovie from "./image/not-found-favorite-image.png";
+import NotResults from "./image/no-results.png";
 
 export {
   HomeIcon,
@@ -36,4 +37,5 @@ export {
   ShareIcon,
   DeleteFavoriteIcon,
   NotFoundMovie,
+  NotResults,
 };
