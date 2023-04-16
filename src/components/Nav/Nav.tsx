@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ROUTE } from "router";
 
-import { CustomLink } from "components";
+import { BasicSwitch, CustomLink } from "components";
 import { StyledMenu, StyledNavBox, StyledTitle } from "./styles";
 import { BookMarkIcon, FireIcon, HomeIcon, SettingIcon } from "assets";
+import { useAppDispatch, useAppSelector } from "store";
+import { toggleMode } from "store/features";
+import { getTheme } from "store/selectors";
 
 export const Nav = () => {
+  const dispatch = useAppDispatch();
+  const { theme } = useAppSelector(getTheme);
+
+  const toggleTheme = () => {
+    dispatch(toggleMode());
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("theme", theme);
+  }, [theme]);
+
   return (
     <StyledMenu>
       <StyledNavBox>
@@ -25,6 +39,7 @@ export const Nav = () => {
           <StyledTitle>Settings</StyledTitle>
         </CustomLink>
       </StyledNavBox>
+      <BasicSwitch onClick={toggleTheme} />
     </StyledMenu>
   );
 };

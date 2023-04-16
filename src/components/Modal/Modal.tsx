@@ -1,19 +1,13 @@
 import { CloseIcon } from "assets";
-import { CustomSelect, FilterInput } from "components";
+import { FilterInput } from "components";
 import { Portal, PortalTarget } from "components/Portal/Portal";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { useAppDispatch } from "store";
-import {
-  deleteMoviesParameters,
-  setMovieTitle,
-  setMovieType,
-  setMovieYear,
-  wipeOutMovies,
-} from "store/features";
-
+import { deleteMoviesParameters, setMovieTitle, setMovieType, setMovieYear, wipeOutMovies } from "store/features";
+import Select from "react-select";
 import {
   Container,
   StyledButtonBox,
@@ -30,8 +24,10 @@ import {
   StyledTitle,
   StyledTittleSelect,
   Title,
+  Wrap,
+  selectStyles,
 } from "./styles";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ModalProps {
   isOpen: boolean;
@@ -139,9 +135,7 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
                       message: "Please enter a valid year",
                     },
                   }}
-                  render={({ field: { ref, ...rest } }) => (
-                    <FilterInput {...rest} placeholder="Year" type="text" />
-                  )}
+                  render={({ field: { ref, ...rest } }) => <FilterInput {...rest} placeholder="Year" type="text" />}
                 />
                 {errors.y?.message && <StyledError>{errors.y.message}</StyledError>}
               </StyledMovieYear>
@@ -152,7 +146,14 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
                   control={control}
                   name="type"
                   render={({ field: { value, onChange } }) => (
-                    <CustomSelect value={value} onChange={onChange} options={options} />
+                    <Select
+                      isMulti={false}
+                      defaultValue={options[0]}
+                      options={options}
+                      onChange={(options) => options && onChange(options.value)}
+                      styles={selectStyles}
+                      isSearchable={false}
+                    />
                   )}
                 />
               </StyledSelect>

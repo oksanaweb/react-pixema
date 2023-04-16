@@ -9,10 +9,11 @@ interface SlideProps {
 }
 
 export const Slide = ({ movie }: SlideProps) => {
+  const { title, poster, imdbID } = movie;
   return (
-    <SlideMovie to={generatePath(ROUTE.Home, { imdbID: movie.imdbID })}>
-      <SlidePoster src={movie.poster} />
-      <Title>{movie.title}</Title>
+    <SlideMovie to={`/details/${imdbID}`}>
+      <SlidePoster src={poster} />
+      <Title>{title}</Title>
     </SlideMovie>
   );
 };
