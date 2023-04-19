@@ -4,21 +4,12 @@ import { ROUTE } from "router";
 import { useAppDispatch, useAppSelector } from "store";
 import { getUserInfo } from "store/selectors";
 import { AnimatePresence } from "framer-motion";
-import {
-  LogOut,
-  Menu,
-  StyledLink,
-  StyledUser,
-  Title,
-  UserBadge,
-  UserBox,
-  UserButton,
-} from "./styles";
+import { LogOut, Menu, StyledLink, StyledUser, Title, UserBadge, UserBox, UserButton } from "./styles";
 import { useToggle } from "hooks";
 import { fetchSignOut } from "store/features";
 
 export const UserProfile = () => {
-  const { isAuth, email } = useAppSelector(getUserInfo);
+  const { isAuth, name } = useAppSelector(getUserInfo);
   const [toggle, setToggle] = useToggle(false);
   const dispatch = useAppDispatch();
 
@@ -33,17 +24,13 @@ export const UserProfile = () => {
           <UserBox>
             <UserIcon />
           </UserBox>
-          {isAuth ? <Title>{email}</Title> : <Title>Sign in</Title>}
+          {isAuth ? <Title>{name}</Title> : <Title>Sign in</Title>}
         </UserBadge>
         <ArrowRightIcon />
       </UserButton>
       {toggle && (
         <AnimatePresence>
-          <Menu
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-          >
+          <Menu initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
             {isAuth ? (
               <>
                 <StyledLink to={ROUTE.Settings}>Edit</StyledLink>
