@@ -28,6 +28,7 @@ import {
   selectStyles,
 } from "./styles";
 import { AnimatePresence, motion } from "framer-motion";
+import { useOutsideClick } from "hooks";
 
 interface ModalProps {
   isOpen: boolean;
@@ -57,6 +58,9 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
   const closeModal = () => {
     toggleModal(false);
   };
+
+  const closeRef = useRef(null);
+  useOutsideClick(closeRef, closeModal, isOpen);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -90,7 +94,7 @@ export const Modal = ({ isOpen, toggleModal }: ModalProps) => {
             transition={{ type: "spring", stiffness: 100 }}
             exit={{ opacity: 0, x: "-100vh" }}
           >
-            <StyledForm onSubmit={handleSubmit(onSubmit)}>
+            <StyledForm onSubmit={handleSubmit(onSubmit)} ref={closeRef}>
               <StyledTitle>
                 <Title>Filters</Title>
                 <StyledCloseButton>
