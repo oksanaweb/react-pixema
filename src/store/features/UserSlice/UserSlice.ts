@@ -73,7 +73,6 @@ export const fetchSignInUser = createAsyncThunk<
 >("user/fetchSignInUser", async ({ email, password }, { rejectWithValue }) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    console.log(user);
     return {
       email: user.email,
       password: password,
