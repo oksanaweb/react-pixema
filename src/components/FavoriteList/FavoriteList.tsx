@@ -9,7 +9,7 @@ export const FavoriteList = () => {
   return (
     <StyledList>
       {favorites.map((movie) => {
-        return <MovieItem movie={movie} key={movie.imdbID} />;
+        return <MovieItem movie={movie} key={movie.imdbID} isFavorite={true} />;
       })}
     </StyledList>
   );

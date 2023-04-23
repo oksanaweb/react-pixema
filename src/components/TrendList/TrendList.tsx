@@ -11,7 +11,7 @@ export const TrendList = ({ movies }: TrendsProps) => {
   return (
     <StyledTrends>
       {movies.map((movie) => {
-        return <MovieItem movie={movie} key={movie.imdbID} />;
+        return <MovieItem movie={movie} key={movie.imdbID} isTrend={true} />;
       })}
     </StyledTrends>
   );
