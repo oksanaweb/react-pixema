@@ -6,6 +6,7 @@ import { Movie } from "types";
 import { FavoriteLabel, MovieBox, MovieCard, MoviePoster, PosterWrap, TitleMovie, TrendsLabel } from "./styles";
 import { BookMarkIcon, FireIcon, ImageNotFount } from "assets";
 import { Colors } from "ui";
+import { memo } from "react";
 
 interface MovieItemProps {
   movie: Movie;
@@ -13,7 +14,7 @@ interface MovieItemProps {
   isFavorite?: boolean;
 }
 
-export const MovieItem = ({ isFavorite, isTrend, movie: { title, poster, imdbID } }: MovieItemProps) => {
+export const MovieItem = memo(({ isFavorite, isTrend, movie: { title, poster, imdbID } }: MovieItemProps) => {
   return (
     <Link to={`/details/${imdbID}`}>
       <MovieBox>
@@ -37,4 +38,4 @@ export const MovieItem = ({ isFavorite, isTrend, movie: { title, poster, imdbID 
       </MovieBox>
     </Link>
   );
-};
+});

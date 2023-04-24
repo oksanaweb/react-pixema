@@ -34,13 +34,14 @@ import { useToggle } from "hooks";
 import { FavoriteModal, Loader } from "components";
 import { ROUTE } from "router";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
 interface DetailsProps {
   details: MovieDetailsInfo;
   movies: Movie[];
 }
 
-export const MovieDetails = ({ details, movies }: DetailsProps) => {
+export const MovieDetails = memo(({ details, movies }: DetailsProps) => {
   const dispatch = useAppDispatch();
   const { movieDetails, isLoading } = useAppSelector(getDetailsMovie);
   const [buttonColor, setButtonColor] = useState("#323537");
@@ -170,4 +171,4 @@ export const MovieDetails = ({ details, movies }: DetailsProps) => {
       <FavoriteModal toggleModal={setToggle} isOpen={isOpen} />
     </Wrap>
   );
-};
+});

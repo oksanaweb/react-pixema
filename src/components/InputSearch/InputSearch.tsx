@@ -4,16 +4,7 @@ import { useToggle, useWindowSize } from "hooks";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ROUTE } from "router";
-import {
-  BurgerButton,
-  BurgerWrap,
-  Container,
-  StyledButton,
-  StyledInput,
-  StyledInputForm,
-  StyledLogo,
-  Wrapper,
-} from "./styles";
+import { BurgerButton, Container, StyledButton, StyledInput, StyledInputForm, StyledLogo, Wrapper } from "./styles";
 import { deleteMoviesParameters, setMovieTitle, wipeOutMovies } from "store/features";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "store";
