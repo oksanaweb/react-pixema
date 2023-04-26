@@ -47,7 +47,6 @@ export const fetchSignUpUser = createAsyncThunk<
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
     const name = userName as string;
     await updateProfile(auth.currentUser as User, { displayName: name });
-    console.log(user.displayName);
 
     return {
       email: user.email,

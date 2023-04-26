@@ -21,6 +21,8 @@ import { updateUserName } from "./UserSlice/UserSlice";
 import { fetchSignOut } from "./UserSlice/UserSlice";
 import { deleteFavorites } from "./FavoriteSlice/FavoriteSlice";
 import { showNextPage } from "./FilterSlice/FilterSlice";
+import { setAuth } from "./UserSlice/UserSlice";
+import { unsetAuth } from "./UserSlice/UserSlice";
 
 export {
   fetchMovies,
@@ -46,4 +48,6 @@ export {
   fetchSignOut,
   deleteFavorites,
   showNextPage,
+  setAuth,
+  unsetAuth,
 };
