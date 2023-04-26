@@ -4,10 +4,9 @@ import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledNav, StyledTemplate, Wrap } from "./styles";
 import { useAppDispatch } from "store";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { setAuth, unsetAuth } from "store/features/UserSlice/UserSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import { setAuth, unsetAuth } from "store/features";
 
 export const MainTemplate = () => {
   const [isOpen, toggleModal] = useToggle();
