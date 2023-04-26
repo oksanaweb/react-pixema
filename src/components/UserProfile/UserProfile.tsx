@@ -6,7 +6,7 @@ import { getUserInfo } from "store/selectors";
 import { AnimatePresence } from "framer-motion";
 import { LogOut, Menu, StyledLink, StyledUser, Title, UserBadge, UserBox, UserButton } from "./styles";
 import { useToggle } from "hooks";
-import { fetchSignOut } from "store/features";
+import { fetchSignOut, unsetAuth } from "store/features";
 
 export const UserProfile = () => {
   const { isAuth, name } = useAppSelector(getUserInfo);
@@ -15,6 +15,7 @@ export const UserProfile = () => {
 
   const handleOut = () => {
     dispatch(fetchSignOut());
+    dispatch(unsetAuth());
   };
 
   return (
