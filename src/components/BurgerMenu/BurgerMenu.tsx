@@ -1,7 +1,7 @@
 import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { ROUTE } from "router";
-import { Box, CloseBurger, StyledBox, StyledLink, StyledMenu, StyledNav, StyledTitle } from "./styles";
+import { CloseBurger, StyledBox, StyledMenu, StyledNav, StyledTitle } from "./styles";
 import { BookMarkIcon, CloseIcon, FireIcon, HomeIcon, SettingIcon, UserIcon } from "assets";
 import { Colors } from "ui";
 import { CustomLink } from "components";

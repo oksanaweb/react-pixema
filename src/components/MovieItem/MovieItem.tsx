@@ -1,7 +1,5 @@
 import React from "react";
-import { generatePath, Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ROUTE } from "router";
+import { Link } from "react-router-dom";
 import { Movie } from "types";
 import { FavoriteLabel, MovieBox, MovieCard, MoviePoster, PosterWrap, TitleMovie, TrendsLabel } from "./styles";
 import { BookMarkIcon, FireIcon, ImageNotFount } from "assets";

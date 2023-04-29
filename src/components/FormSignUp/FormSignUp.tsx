@@ -24,7 +24,6 @@ import {
   TitleForm,
 } from "./styles";
 import { emailValidate, nameValidate, passwordValidate } from "services";
-import { useRef, useState } from "react";
 
 interface UserInfo {
   email: string;
@@ -56,43 +55,6 @@ export const FormSignUp = () => {
     await reset();
   };
 
-  const [userInput, setUserInput] = useState("");
-  const [error, setError] = useState(false);
-  const [showErrorText, setShowErrorText] = useState(false); // ADDED
-  function style(error: boolean) {
-    if (error) {
-      return { backgroundColor: "rgba(255, 0, 0, 0.5)" };
-    }
-  }
-  const ref = useRef<HTMLInputElement>(null);
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (!error) {
-      if (event.target.validity.patternMismatch) {
-        ref.current?.focus();
-        setError(true);
-        setShowErrorText(true);
-      }
-    }
-    if (error) {
-      setShowErrorText(false);
-    }
-  };
-  const handleChange = (event: React.FocusEvent<HTMLInputElement>) => {
-    const newValueIsValid = !event.target.validity.patternMismatch;
-    if (error) {
-      if (newValueIsValid) {
-        setError(false);
-        setShowErrorText(false);
-      }
-    }
-    setUserInput(event.target.value);
-  };
-  const handleFocus = () => {
-    if (error) {
-      setShowErrorText(true);
-    }
-  };
-
   return (
     <FormWrap>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -100,15 +62,7 @@ export const FormSignUp = () => {
 
         <InputBox>
           <InputTitle>Name</InputTitle>
-          <InputName
-            placeholder="Name"
-            {...register("userName", nameValidate())}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            ref={ref}
-            style={style(error)}
-          />
+          <InputName placeholder="Name" {...register("userName", nameValidate())} />
           {errors.userName?.message && <ErrorMessage>{errors.userName.message}</ErrorMessage>}
         </InputBox>
 
@@ -137,11 +91,11 @@ export const FormSignUp = () => {
         {getValues("password") &&
           getValues("confirmPassword") &&
           getValues("password") !== getValues("confirmPassword") && <ErrorReport>Passwords do not match</ErrorReport>}
+        {errors.confirmPassword && <ErrorMessage>Passwords do not match</ErrorMessage>}
         <ButtonWrap>
           <Button type="submit"> Sugn Up {isLoading && <SmallSpinner />}</Button>
         </ButtonWrap>
 
-        {errors.confirmPassword && <p>Passwords do not match</p>}
         <SignUpLink>
           <SignUpTitle>Already have an account?</SignUpTitle>
           <StyledLink to={ROUTE.Sign_in}>Sign In</StyledLink>

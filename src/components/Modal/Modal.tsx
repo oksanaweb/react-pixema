@@ -1,7 +1,7 @@
 import { CloseIcon } from "assets";
 import { FilterInput } from "components";
 import { Portal, PortalTarget } from "components/Portal/Portal";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
@@ -24,10 +24,9 @@ import {
   StyledTitle,
   StyledTittleSelect,
   Title,
-  Wrap,
   selectStyles,
 } from "./styles";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useOutsideClick } from "hooks";
 
 interface ModalProps {

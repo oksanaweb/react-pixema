@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { Slick, SlideContainer } from "./styles";
 import { Slide } from "components";
 import { Movie } from "types";
-import { useWindowSize } from "hooks";
 
 interface SliderProps {
   movies: Movie[];
