@@ -23,7 +23,7 @@ export const MovieDetailsPage = () => {
 
   return (
     <MovieDetailsWrap>
-      {isLoading && <div>isload....</div>}
+      {isLoading && <p>Loading...</p>}
       {error && <span>{error}</span>}
 
       {movieDetails && <MovieDetails details={movieDetails} movies={movies} />}
