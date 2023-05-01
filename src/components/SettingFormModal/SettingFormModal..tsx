@@ -12,7 +12,7 @@ export const SettingFormModal = ({ isOpen }: SettingProps) => {
     <Portal target={PortalTarget.MODAL}>
       {isOpen && (
         <SettingMessage>
-          <Message>Your information successfully updated!</Message>
+          <Message>Your information successfully updated! Please, log in again.</Message>
         </SettingMessage>
       )}
     </Portal>
