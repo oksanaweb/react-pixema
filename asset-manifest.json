@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/react-pixema/static/css/main.9ae9f711.css",
+    "main.js": "/react-pixema/static/js/main.dc514fa4.js",
+    "static/media/background-movies.png": "/react-pixema/static/media/background-movies.930da255bd8fc4112d62.png",
+    "static/media/image-not-found-icon.png": "/react-pixema/static/media/image-not-found-icon.9ef05889eb12cba9a512.png",
+    "static/media/no-results.png": "/react-pixema/static/media/no-results.0cebfc4b1ef6f9ac1019.png",
+    "static/media/pixema-dark-logo.svg": "/react-pixema/static/media/pixema-dark-logo.22981b9ec8b862428f9a0d7bad09443a.svg",
+    "static/media/logo-pixema.svg": "/react-pixema/static/media/logo-pixema.ef69f378f7796fa43e7162952fc3af4f.svg",
+    "static/media/slick.svg": "/react-pixema/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/setting-icon.svg": "/react-pixema/static/media/setting-icon.55ebef72c725859d136b98409ea4a912.svg",
+    "static/media/slick.eot": "/react-pixema/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/delete-favorites-icon.svg": "/react-pixema/static/media/delete-favorites-icon.dee5460350acf4a5af352511e2a92736.svg",
+    "static/media/slick.ttf": "/react-pixema/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/react-pixema/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/react-pixema/index.html",
+    "static/media/close-cross-icon.svg": "/react-pixema/static/media/close-cross-icon.a02a3a6d25f863b243c0f12b15ebab92.svg",
+    "static/media/fire-icon.svg": "/react-pixema/static/media/fire-icon.dcbc6e281c93b2e56a7adbf4b08149bd.svg",
+    "static/media/home-icon.svg": "/react-pixema/static/media/home-icon.381e72913cdedda0f71a1caae6b6b752.svg",
+    "static/media/marks-icon.svg": "/react-pixema/static/media/marks-icon.043691bc59dfce074109bdb72d77998f.svg",
+    "static/media/favorite-icon.svg": "/react-pixema/static/media/favorite-icon.7b158cc965160b56f70458f05a32aae7.svg",
+    "static/media/user-profile-icon.svg": "/react-pixema/static/media/user-profile-icon.e851269d3087ec8648bace4439fe4a9f.svg",
+    "static/media/share-icon.svg": "/react-pixema/static/media/share-icon.c34260fa36aa2ae077fc5e2f7917e8e1.svg",
+    "static/media/input-icon.svg": "/react-pixema/static/media/input-icon.088f46812b69881122f8b9ded090aaf6.svg",
+    "static/media/burger-menu-icon.svg": "/react-pixema/static/media/burger-menu-icon.31c808eae2a074639a3076cebc3b91f9.svg",
+    "static/media/arrow-down-icon.svg": "/react-pixema/static/media/arrow-down-icon.1f0d9e9ea9a93f92106179257d89acea.svg",
+    "static/media/arrow-right-icon.svg": "/react-pixema/static/media/arrow-right-icon.b75f455325c25433eceb22658622086d.svg",
+    "main.9ae9f711.css.map": "/react-pixema/static/css/main.9ae9f711.css.map",
+    "main.dc514fa4.js.map": "/react-pixema/static/js/main.dc514fa4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ae9f711.css",
+    "static/js/main.dc514fa4.js"
+  ]
+}
