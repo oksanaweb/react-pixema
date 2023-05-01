@@ -1,8 +1,8 @@
 {
   "name": "react-pixema",
   "version": "0.1.0",
-  "homepage": "https://oksanaweb.github.io/react-pixema",
   "private": true,
+  "homepage": "https://oksanaweb.github.io/react-pixema/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
