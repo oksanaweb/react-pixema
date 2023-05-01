@@ -1,4 +1,4 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { auth } from "../../../firebase";
 import { FirebaseError } from "firebase/app";
 import {
@@ -106,12 +106,14 @@ export const fetchResetPassword = createAsyncThunk<undefined, { email: string },
 
 export const fetchUpdateEmail = createAsyncThunk<void, { email: string }, { rejectValue: FirebaseErrorMessage }>(
   "user/fetchUpdateEmail",
-  async ({ email }, { rejectWithValue }) => {
+  async ({ email }, { dispatch, rejectWithValue }) => {
     try {
       const auth = getAuth();
       const user = auth.currentUser;
       if (user !== null) {
         await updateEmail(user, email);
+        await sendEmailVerification(user);
+        dispatch(setVerificationUser(user.emailVerified));
       }
     } catch (error) {
       const firebaseError = error as FirebaseError;
@@ -150,13 +152,26 @@ export const fetchSignOut = createAsyncThunk<void, undefined, { rejectValue: Fir
   },
 );
 
+export const fetchUpdateUserName = createAsyncThunk<Pick<UserState, "name">, { name: string }, { rejectValue: string }>(
+  "user/fetchUpdateUserName",
+  async ({ name }, { rejectWithValue }) => {
+    try {
+      await updateProfile(auth.currentUser as User, { displayName: name });
+
+      return {
+        name: auth.currentUser?.displayName as string,
+      };
+    } catch (error) {
+      const firebaseError = error as FirebaseError;
+      return rejectWithValue(getFirebaseErrorMessage(firebaseError.code));
+    }
+  },
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    updateUserName: (state, action: PayloadAction<string>) => {
-      if (action.payload) state.name = action.payload;
-    },
     setAuth: (state, { payload }) => {
       state.isAuth = true;
       state.name = payload.displayName;
@@ -227,7 +242,6 @@ const userSlice = createSlice({
     builder.addCase(fetchResetPassword.rejected, (state, { payload }) => {
       if (payload) {
         state.isPendingAuth = false;
-
         state.isAuth = false;
         state.isResetPassword = false;
       }
@@ -277,8 +291,22 @@ const userSlice = createSlice({
         state.isAuth = true;
       }
     });
+    builder.addCase(fetchUpdateUserName.pending, (state) => {
+      state.isLoading = true;
+      state.errorMessage = null;
+    });
+    builder.addCase(fetchUpdateUserName.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.name = payload.name;
+    });
+    builder.addCase(fetchUpdateUserName.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoading = false;
+        state.errorMessage = payload;
+      }
+    });
   },
 });
 
-export const { updateUserName, setAuth, unsetAuth, setVerificationUser } = userSlice.actions;
+export const { setAuth, unsetAuth, setVerificationUser } = userSlice.actions;
 export default userSlice.reducer;

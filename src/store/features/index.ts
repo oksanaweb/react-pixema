@@ -17,12 +17,12 @@ import { addFavorites } from "./FavoriteSlice/FavoriteSlice";
 import { fetchResetPassword } from "./UserSlice/UserSlice";
 import { fetchUpdateEmail } from "./UserSlice/UserSlice";
 import { fetchUpdatePassword } from "./UserSlice/UserSlice";
-import { updateUserName } from "./UserSlice/UserSlice";
 import { fetchSignOut } from "./UserSlice/UserSlice";
 import { deleteFavorites } from "./FavoriteSlice/FavoriteSlice";
 import { showNextPage } from "./FilterSlice/FilterSlice";
 import { setAuth } from "./UserSlice/UserSlice";
 import { unsetAuth } from "./UserSlice/UserSlice";
+import { fetchUpdateUserName } from "./UserSlice/UserSlice";
 
 export {
   fetchMovies,
@@ -44,10 +44,10 @@ export {
   fetchResetPassword,
   fetchUpdateEmail,
   fetchUpdatePassword,
-  updateUserName,
   fetchSignOut,
   deleteFavorites,
   showNextPage,
   setAuth,
   unsetAuth,
+  fetchUpdateUserName,
 };
