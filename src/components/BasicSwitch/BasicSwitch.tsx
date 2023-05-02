@@ -10,7 +10,7 @@ interface SwitchProps {
 export const BasicSwitch = ({ onClick }: SwitchProps) => {
   return (
     <div>
-      <Switch {...label} color="secondary" defaultChecked onClick={onClick} />
+      <Switch {...label} defaultChecked onClick={onClick} />
     </div>
   );
 };
